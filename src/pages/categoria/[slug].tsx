@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { IPostCardProps } from "@/interfaces/interfaces";
 import { getCategories, getPostsByCategory } from "@/services";
-import { Categories, Header, PostCard, PostWidget } from "@/components";
+import { Categories, PostCard, PostWidget } from "@/components";
 import CategoriesHeader from "@/components/CategoriesHeader";
 import Head from "next/head";
 import { NextSeo } from "next-seo";
