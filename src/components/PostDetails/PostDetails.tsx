@@ -1,36 +1,39 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { ReactNode } from "react";
 import moment from "moment";
-import { IChild, IContentType, IPostDetails, PostDetailProps } from "@/interfaces/interfaces";
-
+import { IChild, IContentType, PostDetailProps } from "@/interfaces/interfaces";
+import Image from "next/image";
+import Calendar from "@/svg/calendar";
 
 const PostDetail: React.FC<PostDetailProps> = ({ post }) => {
 
   const getContentFragment = (index: number, children: IChild[], typeObj?: IContentType) => {
-
     return children.map((child, childIndex) => {
       let content: ReactNode = child.text;
-  
-      if (child.bold) content = <b key={childIndex}>{content}</b>;
+
+      if (child.bold) content = <strong key={childIndex}>{content}</strong>;
       if (child.italic) content = <em key={childIndex}>{content}</em>;
       if (child.underline) content = <u key={childIndex}>{content}</u>;
-  
+
       switch (typeObj?.type) {
         case 'heading-three':
           return <h3 key={childIndex} className="text-xl font-semibold mb-4">{content}</h3>;
         case 'paragraph':
-          return <p key={childIndex} className=" text-lg text-justify mb-8">{content}</p>;
+          return <p key={childIndex} className="text-lg text-justify mb-8">{content}</p>;
         case 'heading-four':
-          return <h4 key={childIndex} className="text-md font-semibold mb-4">{content}</h4>;
+          return <h4 key={childIndex} className="text-lg font-medium mb-4">{content}</h4>;
         case 'image':
           return (
-            <img
-            key={index}
-            alt={typeObj.title || ""}
-            height={typeObj.height || undefined}
-            width={typeObj.width || undefined}
-            src={typeObj.src || ""}
-            />
+            <figure key={index}>
+              <img
+                alt={typeObj.title || "Imagem relacionada ao post"}
+                height={typeObj.height || undefined}
+                width={typeObj.width || undefined}
+                src={typeObj.src || ""}
+                className="my-4 rounded shadow-lg"
+              />
+              <figcaption className="text-gray-500 text-sm mt-2">{typeObj.title}</figcaption>
+            </figure>
           );
         default:
           return content;
@@ -38,34 +41,34 @@ const PostDetail: React.FC<PostDetailProps> = ({ post }) => {
     });
   };
   return (
-    <div className="bg-white shadow-lg rounded-lg lg:p-8 pb-12 mb-8">
-      <div className="relative overflow-hidden shadow-md mb-6">
-        <img src={post.featuredImage?.url} alt="" className="object-top h-full w-full object-cover shadow-lg rounded-t-lg lg:rounded-lg" />
-      </div>
+    <article className="bg-white shadow-lg rounded-lg lg:p-8 pb-12 mb-8">
+      <figure className="relative overflow-hidden shadow-md mb-6">
+        <img src={post.featuredImage?.url} alt={post.title} className="object-top h-full w-full object-cover shadow-lg rounded-t-lg lg:rounded-lg" />
+        <figcaption className="text-gray-600 text-xs mt-2">{post.title}</figcaption>
+      </figure>
       <div className="px-4 lg:px-0">
-        <div className="flex items-center mb-8 w-full">
-          <div className="hidden md:flex  justify-center lg:mb-0 lg:w-auto mr-8 items-center">
-            <img
+        <header className="flex items-center mb-8 w-full">
+          <div className="hidden md:flex justify-center lg:mb-0 lg:w-auto mr-8 items-center">
+            <Image
               alt={post.author?.name}
-              height="30px"
-              width="30px"
+              height={30}
+              width={30}
               className="align-middle rounded-full"
               src={post.author?.photo?.url}
             />
             <p className="inline align-middle text-gray-700 ml-2 font-medium text-lg">{post.author?.name}</p>
           </div>
           <div className="font-medium text-gray-700">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 inline mr-2 text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-            <span className="align-middle">{moment(post.createdAt).format('MMM DD, YYYY')}</span>
+           <Calendar/>
+            <time className="align-middle">{moment(post.createdAt).format('MMM DD, YYYY')}</time>
           </div>
-        </div>
+        </header>
         <h1 className="mb-8 text-3xl font-semibold">{post.title}</h1>
         {post.content.raw.children.map((typeObj, index) => getContentFragment(index, typeObj.children, typeObj))}
       </div>
-    </div>
+    </article>
   );
 };
+
 
 export default PostDetail;
