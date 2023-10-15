@@ -9,13 +9,13 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <>
     <DefaultSeo
-        title="Blog de Nutrição"
-        description="Um blog de nutrição com dicas de alimentação e saúde"
+        title="CháComSabor"
+        description="Um blog de informações e dicas sobre chás"
         openGraph={{
           type: 'website',
           locale: 'pt_BR',
-          url: 'https://www.seusite.com.br/',
-          site_name: 'blogNutriTri',
+          url: 'cha-com-sabor.vercel.app/',
+          site_name: 'CháComSabor',
         }}
       />
     <Layout>

@@ -26,14 +26,14 @@ export default function CategoryPage({
   return (
     <>
       <Head>
-        <title>{selectedCategory} - Blog de Nutrição</title>
+        <title>{selectedCategory} - Blog de Chás</title>
         <meta name="description" content={`Posts sobre ${selectedCategory}`} />
       </Head>
       <NextSeo
         openGraph={{
           title: selectedCategory,
           description: `Posts sobre ${selectedCategory}`,
-          url: `https://www.seusite.com.br/categorias/${selectedCategory}`,
+          url: `https://cha-com-sabor.vercel.app/categorias/${selectedCategory}`,
           type: "website",
         }}
       />
@@ -67,7 +67,7 @@ export default function CategoryPage({
           >
             <FontAwesomeIcon icon={faBackward} />
           </button>
-          <span className="text-lg">
+          <span className="text-lg font-semibold text-white">
             página {currentPage} de {totalPages}
           </span>
           <button

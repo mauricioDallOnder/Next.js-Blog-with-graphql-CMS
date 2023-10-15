@@ -10,6 +10,7 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
+
 const Header: React.FC = () => {
   const [categories, setCategories] = useState<
     { name: string; slug: string }[]
@@ -37,7 +38,10 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setDropdownOpen(false);
       }
     };
@@ -58,15 +62,13 @@ const Header: React.FC = () => {
           <Link href="/" passHref>
             <div className="flex items-center">
               <Image
-                src="https://flowbite.com/docs/images/logo.svg"
+                src={
+                  "https://firebasestorage.googleapis.com/v0/b/geradorimagens-27342.appspot.com/o/blog-cha%2FScreenshot_2023-10-15_at_16.18.14-removebg-preview.png?alt=media&token=e8f69fdf-c6f1-4788-bd37-68603b35673e&_gl=1*1cwpgw7*_ga*MTA2NDY5MTI4MS4xNjk3MzkyMDc0*_ga_CW55HF8NVT*MTY5NzM5NzMzMS4yLjEuMTY5NzM5Nzg2Ni40NS4wLjA."
+                }
                 alt="Logotipo BlogNutriTri"
-                width={32}
-                height={32}
-                className="h-8 mr-3"
+                width={200}
+                height={241}
               />
-              <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
-                BlogNutriTri
-              </span>
             </div>
           </Link>
 
@@ -76,18 +78,22 @@ const Header: React.FC = () => {
             className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden  focus:outline-none "
             aria-label="Open main menu"
           >
-            <FontAwesomeIcon size="3x" icon={menuOpen ? faTimes : faBars} style={{color:'red'}} />
+            <FontAwesomeIcon
+              size="3x"
+              icon={menuOpen ? faTimes : faBars}
+              style={{ color: "red" }}
+            />
           </button>
 
           <div
-           ref={dropdownRef}
-           className={`${
-             menuOpen ? "block" : "hidden"
-           } w-full md:block md:w-auto md:pt-0 md:mt-0`}
-           id="navbar-dropdown"
-           aria-label="Menu de navegação principal"
+            ref={dropdownRef}
+            className={`${
+              menuOpen ? "block" : "hidden"
+            } w-full md:block md:w-auto md:pt-0 md:mt-0`}
+            id="navbar-dropdown"
+            aria-label="Menu de navegação principal"
           >
-           <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               <li>
                 <Link href="/" passHref>
                   <span className="block py-2 pl-3 pr-4 text-white font-bold bg-transparent md:hover:text-red  hover:underline md:p-0">
@@ -97,11 +103,11 @@ const Header: React.FC = () => {
               </li>
               <li className="relative">
                 <button
-                   onClick={() => setDropdownOpen(!dropdownOpen)}
-                   id="dropdownNavbarLink"
-                   className="flex items-center justify-between w-full py-2 pl-3 pr-4 text-white rounded hover:text-white md:hover:bg-transparent md:border-0 md:p-0 md:w-auto md:hover:text-red focus:outline-blue focus:text-red font-bold hover:underline"
-                   aria-haspopup="true"
-                   aria-expanded={dropdownOpen}
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                  id="dropdownNavbarLink"
+                  className="flex items-center justify-between w-full py-2 pl-3 pr-4 text-white rounded hover:text-white md:hover:bg-transparent md:border-0 md:p-0 md:w-auto md:hover:text-red focus:outline-blue focus:text-red font-bold hover:underline"
+                  aria-haspopup="true"
+                  aria-expanded={dropdownOpen}
                 >
                   Artigos
                   <FontAwesomeIcon
@@ -110,7 +116,7 @@ const Header: React.FC = () => {
                   />
                 </button>
                 <div
-                   className={`${
+                  className={`${
                     dropdownOpen ? "block" : "hidden"
                   } z-10 bg-red divide-y divide-gray-100 rounded-lg shadow w-44 absolute top-full left-0 mt-2 dark:bg-gray-700 dark:divide-gray-600 font-bold  `}
                   id="dropdownNavbar"
@@ -120,7 +126,11 @@ const Header: React.FC = () => {
                     aria-labelledby="dropdownNavbarLink"
                   >
                     {categories.map((category, index) => (
-                      <li key={index} role="none" className="hover:text-red-700">
+                      <li
+                        key={index}
+                        role="none"
+                        className="hover:text-red-700"
+                      >
                         <button
                           onClick={() => handleCategoryClick(category)}
                           className="font-semibold cursor-pointer mt-2 md:mt-0 px-4 py-2 w-full text-left md:hover:text-red-700 focus:outline-blue focus:text-red"
@@ -138,7 +148,6 @@ const Header: React.FC = () => {
                   Sobre nós
                 </span>
               </Link>
-              
             </ul>
           </div>
         </div>

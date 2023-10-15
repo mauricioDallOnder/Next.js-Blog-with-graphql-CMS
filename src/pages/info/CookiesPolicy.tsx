@@ -8,27 +8,23 @@ const CookiesPolicy = () => {
       <NextSeo
         title="Política de Cookies"
         description="Saiba mais sobte nossa politica de Cookies."
-        canonical="https://www.seusite.com/politica-de-privacidade"
+        canonical="https://cha-com-sabor.vercel.app/politica-de-privacidade"
         openGraph={{
           type: "website",
-          url: "https://www.seusite.com/politica-de-privacidade",
+          url: "https://cha-com-sabor.vercel.app/politica-de-privacidade",
           title: "Política de Cookies",
           description: "Descubra como tratamos seus dados pessoais.",
           images: [
             {
-              url: "https://www.seusite.com/uma-imagem.jpg",
+              url: "https://firebasestorage.googleapis.com/v0/b/geradorimagens-27342.appspot.com/o/blog-cha%2Fcha.jpeg?alt=media&token=06fbdb29-4e42-4e71-ba89-6b58a5ecb3b9&_gl=1*5cjsr3*_ga*MTA2NDY5MTI4MS4xNjk3MzkyMDc0*_ga_CW55HF8NVT*MTY5NzM5MjA3NC4xLjEuMTY5NzM5MjI0NS4yNy4wLjA.",
               width: 800,
               height: 600,
               alt: "Descrição da Imagem",
             },
           ],
-          site_name: "BlogNutriITri",
+          site_name: "CháComSabor",
         }}
-        twitter={{
-          handle: "@handle",
-          site: "@site",
-          cardType: "summary_large_image",
-        }}
+     
       />
       <main className="container mx-auto px-10 mb-16 max-w-5xl flex flex-col justify-start">
         <article

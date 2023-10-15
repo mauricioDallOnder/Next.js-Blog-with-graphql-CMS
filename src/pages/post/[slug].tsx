@@ -17,14 +17,14 @@ const PostPage: React.FC<PostPageProps> = ({ post }) => {
   return (
     <>
     <Head>
-        <title>{post.title} - Blog de Nutrição</title>
+        <title>{post.title} - Blog de Chás</title>
         <meta name="description" content={contentText} />
       </Head>
       <NextSeo
         openGraph={{
           title: post.title,
           description: contentText,
-          url: `https://www.seusite.com.br/posts/${post.slug}`,
+          url: `https://cha-com-sabor.vercel.app/posts/${post.slug}`,
           images: [
             {
               url: post.featuredImage.url, 
@@ -77,12 +77,3 @@ export const getServerSideProps: GetServerSideProps<PostPageProps> = async (
 
 export default PostPage;
 
-// <AdjacentPostCard position={"right"} post={post} />
-
-/*
-<PostDetail post={post} />
-            <Author post={post} />
-            <AdjacentPosts post={post} position={"LEFT"}/>
-            <CommentsForm post={post} />
-            <Comments slug={post.slug} />
-*/

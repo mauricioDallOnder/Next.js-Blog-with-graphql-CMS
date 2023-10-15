@@ -91,7 +91,7 @@ export default function Footer() {
           </section>
 
           <nav>
-            <Stack direction={"row"} spacing={6} >
+            <Stack direction={"row"} spacing={6}>
               <Link
                 href="/info/PrivacyPolicy"
                 role="link"
@@ -165,6 +165,20 @@ export default function Footer() {
               </SocialButton>
             </Stack>
           </Container>
+
+          <Stack
+            direction={"row"}
+            justifyContent="center"
+            
+            spacing={6}
+          >
+            <Text color="white" textAlign='justify'>
+              Importante: O conteúdo presente neste blog tem um caráter
+              estritamente informativo, não substituindo de forma alguma a
+              orientação médica ou de especialistas. Em caso de dúvida, é essencial que você busque
+              a orientação médica de confiança.{" "}
+            </Text>
+          </Stack>
         </Box>
       </Box>
     </footer>
