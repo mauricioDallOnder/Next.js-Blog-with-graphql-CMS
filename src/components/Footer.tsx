@@ -172,10 +172,10 @@ export default function Footer() {
             
             spacing={6}
           >
-            <Text color="white" textAlign='justify'>
+            <Text color="white" textAlign='justify' marginLeft='5px' marginRight='5px'>
               Importante: O conteúdo presente neste blog tem um caráter
               estritamente informativo, não substituindo de forma alguma a
-              orientação médica ou de especialistas. Em caso de dúvida, é essencial que você busque
+              orientação médica. Em caso de dúvida, é essencial que você busque
               a orientação médica de confiança.{" "}
             </Text>
           </Stack>

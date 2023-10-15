@@ -3,6 +3,7 @@
 import React from "react";
 import { NextSeo } from "next-seo";
 import Image from "next/image";
+import { Header } from "@/components";
 
 const About = () => {
   return (
@@ -28,6 +29,7 @@ const About = () => {
         }}
       />
        <main className="container mx-auto px-10 my-16 max-w-5xl flex flex-col justify-start">
+       
         <article
           className="bg-white shadow-lg rounded-lg p-8 mb-8"
           aria-labelledby="main-heading"

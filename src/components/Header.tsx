@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useRef, useState } from "react";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { getCategories } from "../services";
 import { useRouter } from "next/router";
@@ -10,6 +10,7 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
+import { faSearch } from "@fortawesome/free-solid-svg-icons"; // Importe o ícone de fechar
 
 const Header: React.FC = () => {
   const [categories, setCategories] = useState<
@@ -17,6 +18,8 @@ const Header: React.FC = () => {
   >([]);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [isInputVisible, setInputVisible] = useState(false);
+  const [inputValue, setInputValue] = useState("");
   const router = useRouter();
 
   useEffect(() => {
@@ -52,10 +55,23 @@ const Header: React.FC = () => {
     };
   }, []);
 
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
+  const toggleInputVisibility = () => {
+    setInputVisible(!isInputVisible);
+  };
+  const handleSearch = () => {
+    if (inputValue.trim() !== "") {
+      router.push(`/search/${inputValue.trim()}`);
+      setInputValue("");
+    }
+  };
+
   return (
     <header className="container mx-auto px-4 md:px-10 mb-8">
       <nav
-        className="border-b w-full  border-blue-400 py-6 bg-gradient-to-rb from-6d327c via-485DA6 to-32b37b"
+        className="border-b w-full  border-blue-400 py-3 bg-gradient-to-rb from-6d327c via-485DA6 to-32b37b"
         aria-label="Main navigation"
       >
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -148,6 +164,44 @@ const Header: React.FC = () => {
                   Sobre nós
                 </span>
               </Link>
+              <div className="flex justify-start gap-2 ">
+                {isInputVisible ? (
+                  <>
+                    <input
+                      className=" pl-2 bg-input-backgroud rounded-lg w-88 text-base font-medium text-text-dark focus:border-yellow focus:outline-none md:w-full"
+                      placeholder="Digite algo para pesquisar..."
+                      value={inputValue}
+                      onChange={handleChange}
+                      aria-label="Search"
+                    />
+                    <button
+                      onClick={handleSearch}
+                      className="flex items-center py-2 pl-3 pr-4 text-white font-bold bg-transparent md:hover:text-red  hover:underline md:p-0"
+                    >
+                      <FontAwesomeIcon icon={faSearch} />
+                      <span className="ml-2 text-white">Buscar</span>
+                    </button>
+                    <button
+                      onClick={toggleInputVisibility}
+                      className="flex items-center py-2 pl-3 pr-4 text-white font-bold bg-transparent md:hover:text-red  hover:underline md:p-0"
+                    >
+                      <FontAwesomeIcon
+                        icon={faTimes}
+                        style={{ color: "red" }}
+                      />
+                      <span className="ml-2 text-white font-semibold">Fechar</span>
+                    </button>
+                  </>
+                ) : (
+                  <button
+                    onClick={toggleInputVisibility}
+                    className="flex items-center py-2 pl-3 pr-4 text-white font-bold bg-transparent md:hover:text-red  hover:underline md:p-0"
+                  >
+                    <FontAwesomeIcon icon={faSearch} />
+                    <span className="ml-2 text-white font-semibold">Pesquisar</span>
+                  </button>
+                )}
+              </div>
             </ul>
           </div>
         </div>

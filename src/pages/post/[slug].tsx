@@ -2,7 +2,7 @@
 import { GetServerSideProps } from "next";
 import { IPostDetails } from "@/interfaces/interfaces";
 import { getPostDetails } from "@/services";
-import { Author, Comments, CommentsForm, PostWidget } from "@/components";
+import { Author, Comments, CommentsForm, Header, PostWidget } from "@/components";
 import PostDetail from "@/components/PostDetails/PostDetails";
 import AdjacentPostsContainer from "@/components/Sidebar/AdjacentPost";
 import Head from 'next/head'; // Importar o Head
@@ -35,6 +35,7 @@ const PostPage: React.FC<PostPageProps> = ({ post }) => {
         }}
       />
       <main className="container mx-auto px-10 mb-8"> 
+    
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <article className="col-span-1 lg:col-span-8"> 
             <PostDetail post={post} />

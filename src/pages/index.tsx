@@ -4,14 +4,19 @@ import { getPosts } from "@/services";
 import FeaturedPostCarousel from "@/components/FeaturedPostCard";
 import { IPostCardProps } from "@/interfaces/interfaces";
 import Head from "next/head";
-import { useState } from "react";
-import { faBackward, faForward } from "@fortawesome/free-solid-svg-icons";
+import { ChangeEvent, useState } from "react";
+import {
+  faBackward,
+  faForward,
+  faSearch,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const POSTS_PER_PAGE = 3;
 export default function Home({
   posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [currentPage, setCurrentPage] = useState(1);
+
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
 
   const paginatedPosts = posts.slice(
@@ -63,11 +68,11 @@ export default function Home({
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
             className={`bg-blue-500 text-white py-2 px-4 rounded-lg focus:outline-none hover:bg-blue-600 transition 
-      ${currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""}`}
+            ${currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""}`}
           >
             <FontAwesomeIcon icon={faBackward} />
           </button>
-          <span className="text-lg">
+          <span className="text-lg font-semibold text-white">
             página {currentPage} de {totalPages}
           </span>
           <button

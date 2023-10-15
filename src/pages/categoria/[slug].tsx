@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { IPostCardProps } from "@/interfaces/interfaces";
 import { getCategories, getPostsByCategory } from "@/services";
-import { Categories, PostCard, PostWidget } from "@/components";
+import { Categories, Header, PostCard, PostWidget } from "@/components";
 import CategoriesHeader from "@/components/CategoriesHeader";
 import Head from "next/head";
 import { NextSeo } from "next-seo";
@@ -38,6 +38,7 @@ export default function CategoryPage({
         }}
       />
       <main className="container mx-auto px-10 mb-8">
+      
         <section>
           {selectedCategory && (
             <CategoriesHeader name={selectedCategory!} />

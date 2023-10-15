@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import { NextSeo } from "next-seo";
+import { Header } from "@/components";
 
 const CookiesPolicy = () => {
   return (
@@ -27,6 +28,7 @@ const CookiesPolicy = () => {
      
       />
       <main className="container mx-auto px-10 mb-16 max-w-5xl flex flex-col justify-start">
+      
         <article
           className="bg-white shadow-lg rounded-lg p-8 mb-8 privacy-section"
           aria-label="Política de Privacidade"
