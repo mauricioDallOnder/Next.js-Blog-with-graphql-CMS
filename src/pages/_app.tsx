@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Layout from "@/components/layout/Layout";
 import { DefaultSeo } from 'next-seo';
+import { ChakraProvider } from '@chakra-ui/react'
 function App({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -18,7 +19,9 @@ function App({ Component, pageProps }: AppProps) {
         }}
       />
     <Layout>
+   
       <Component {...pageProps} />;
+     
     </Layout>
     </>
   )
