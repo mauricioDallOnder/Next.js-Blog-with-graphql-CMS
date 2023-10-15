@@ -34,7 +34,7 @@ export default function CategoryPage({
           title: selectedCategory,
           description: `Posts sobre ${selectedCategory}`,
           url: `https://cha-com-sabor.vercel.app/categorias/${selectedCategory}`,
-          type: "website",
+          type: "article",
         }}
       />
       <main className="container mx-auto px-10 mb-8">
