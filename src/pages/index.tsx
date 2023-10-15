@@ -4,11 +4,10 @@ import { getPosts } from "@/services";
 import FeaturedPostCarousel from "@/components/FeaturedPostCard";
 import { IPostCardProps } from "@/interfaces/interfaces";
 import Head from "next/head";
-import { ChangeEvent, useState } from "react";
+import {useState } from "react";
 import {
   faBackward,
-  faForward,
-  faSearch,
+  faForward
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const POSTS_PER_PAGE = 3;
@@ -27,22 +26,22 @@ export default function Home({
   return (
     <>
       <Head>
-        <title>BlogNutriTri</title>
+        <title>ChaComSabor</title>
         <meta
           name="description"
-          content="Um blog de nutrição com dicas de alimentação e saúde."
+          content="Um blog de com dicas de chás,saúde e bem estar."
         />
-        <meta name="keywords" content="blog, nextjs, nutrição, esporte" />
-        <meta property="og:title" content="Blog de Nutrição" />
+        <meta name="keywords" content="blog, chá, saúde, bem estar" />
+        <meta property="og:title" content="Blog de Chás" />
         <meta
           property="og:description"
-          content="Um blog de nutrição com dicas de alimentação e saúde"
+          content="Um blog de com dicas de chás,saúde e bem estar."
         />
         <meta
           property="og:image"
-          content="URL da imagem de destaque para redes sociais"
+          content="https://firebasestorage.googleapis.com/v0/b/geradorimagens-27342.appspot.com/o/blog-cha%2Fcha.jpeg?alt=media&token=06fbdb29-4e42-4e71-ba89-6b58a5ecb3b9&_gl=1*5cjsr3*_ga*MTA2NDY5MTI4MS4xNjk3MzkyMDc0*_ga_CW55HF8NVT*MTY5NzM5MjA3NC4xLjEuMTY5NzM5MjI0NS4yNy4wLjA."
         />
-        <meta property="og:url" content="URL do seu site" />
+        <meta property="og:url" content="https://cha-com-sabor.vercel.app" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <main className="container mx-auto px-10 mb-8">

@@ -10,12 +10,12 @@ function App({ Component, pageProps }: AppProps) {
     <>
     <DefaultSeo
         title="CháComSabor"
-        description="Um blog de informações e dicas sobre chás"
+        description="Um blog de com dicas de chás,saúde e bem estar."
         openGraph={{
           type: 'website',
           locale: 'pt_BR',
           url: 'cha-com-sabor.vercel.app/',
-          site_name: 'CháComSabor',
+          site_name: 'ChaComSabor',
         }}
       />
     <Layout>
