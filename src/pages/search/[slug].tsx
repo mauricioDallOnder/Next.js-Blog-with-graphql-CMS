@@ -80,3 +80,4 @@ export const getServerSideProps: GetServerSideProps<SearchPageProps> = async (co
 
   return { props: { posts: resultsFiltered, searchTerm } };
 };
+//fix responsividade
