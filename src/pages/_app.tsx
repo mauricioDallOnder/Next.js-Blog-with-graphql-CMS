@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Layout from "@/components/layout/Layout";
 import { DefaultSeo } from 'next-seo';
-import CookieConsent from "@/components/CookieBanner";
+import CookieConsentBanner from "@/components/CookieBanner";
 function App({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -22,7 +22,7 @@ function App({ Component, pageProps }: AppProps) {
     <Layout>
    
       <Component {...pageProps} />;
-      <CookieConsent />
+      <CookieConsentBanner/>
     </Layout>
     </>
   )
