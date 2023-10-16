@@ -1,7 +1,7 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import { getCategories, getPosts } from '../../services';
 import xmlbuilder from 'xmlbuilder';
-import { IPostCardProps, Category } from '../../interfaces/interfaces'; // atualize com o caminho correto
+import { IPostCardProps, Category } from '../../interfaces/interfaces';
 
 interface Url {
   url: string;
@@ -24,7 +24,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx: GetServerSideP
     { url: '/info/CookiesPolicy', changefreq: 'yearly', priority: 0.5 },
     { url: '/info/PrivacyPolicy', changefreq: 'yearly', priority: 0.5 },
     { url: '/info/TermsOfUse', changefreq: 'yearly', priority: 0.5 },
-    { url: '/404', changefreq: 'yearly', priority: 0.1 },  // ou considere não incluir no sitemap    
+    // { url: '/404', changefreq: 'yearly', priority: 0.1 },  // Considerar não incluir no sitemap    
   ];
 
   // Adicione URLs dinâmicas
@@ -42,7 +42,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx: GetServerSideP
   
   urls.forEach(({ url, changefreq, priority }) => {
     const urlElement = sitemap.ele('url');
-    urlElement.ele('loc').txt(`https://cha-com-sabor.vercel.app/${url}`); // substitua pelo seu domínio real
+    // Removendo a barra adicional e garantindo que não há barras duplicadas no final da URL base
+    urlElement.ele('loc').txt(`https://cha-com-sabor.vercel.app${url}`); // substitua pelo seu domínio real
     urlElement.ele('changefreq').txt(changefreq);
     urlElement.ele('priority').txt(priority.toString());
   });
