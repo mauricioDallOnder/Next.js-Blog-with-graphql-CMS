@@ -159,49 +159,57 @@ const Header: React.FC = () => {
                   </ul>
                 </div>
               </li>
-              <Link href="/info/About">
-                <span className="block py-2 pl-3 pr-4 text-white bg-red md:hover:text-red hover:underline md:p-0 font-bold">
-                  Sobre nós
-                </span>
-              </Link>
-              <div className="flex justify-start gap-2 ">
-                {isInputVisible ? (
-                  <>
-                    <input
-                      className=" pl-2 bg-input-backgroud rounded-lg w-88 text-base font-medium text-text-dark focus:border-yellow focus:outline-none md:w-full"
-                      placeholder="Digite algo para pesquisar..."
-                      value={inputValue}
-                      onChange={handleChange}
-                      aria-label="Search"
-                    />
-                    <button
-                      onClick={handleSearch}
-                      className="flex items-center py-2 pl-3 pr-4 text-white font-bold bg-transparent md:hover:text-red  hover:underline md:p-0"
-                    >
-                      <FontAwesomeIcon icon={faSearch} />
-                      <span className="ml-2 text-white">Buscar</span>
-                    </button>
+              <li>
+                <Link href="/info/About">
+                  <span className="block py-2 pl-3 pr-4 text-white bg-red md:hover:text-red hover:underline md:p-0 font-bold">
+                    Sobre nós
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <div className="flex flex-col md:flex-row justify-start gap-2 items-start md:items-center">
+                  {isInputVisible ? (
+                    <>
+                      <input
+                        className="pl-2 bg-input-backgroud rounded-lg w-full md:w-88 text-base font-medium text-text-dark focus:border-yellow focus:outline-none"
+                        placeholder="Digite algo para pesquisar..."
+                        value={inputValue}
+                        onChange={handleChange}
+                        aria-label="Search"
+                      />
+                      <button
+                        onClick={handleSearch}
+                        className="flex items-center py-2 pl-3 pr-4 text-white font-bold bg-transparent md:hover:text-red hover:underline md:p-0 mt-2 md:mt-0"
+                      >
+                        <FontAwesomeIcon icon={faSearch} />
+                        <span className="ml-2 text-white">Buscar</span>
+                      </button>
+                      <button
+                        onClick={toggleInputVisibility}
+                        className="flex items-center py-2 pl-3 pr-4 text-white font-bold bg-transparent md:hover:text-red hover:underline md:p-0 mt-2 md:mt-0"
+                      >
+                        <FontAwesomeIcon
+                          icon={faTimes}
+                          style={{ color: "red" }}
+                        />
+                        <span className="ml-2 text-white font-semibold">
+                          Fechar
+                        </span>
+                      </button>
+                    </>
+                  ) : (
                     <button
                       onClick={toggleInputVisibility}
-                      className="flex items-center py-2 pl-3 pr-4 text-white font-bold bg-transparent md:hover:text-red  hover:underline md:p-0"
+                      className="flex items-center py-2 pl-3 pr-4 text-white font-bold bg-transparent md:hover:text-red hover:underline md:p-0"
                     >
-                      <FontAwesomeIcon
-                        icon={faTimes}
-                        style={{ color: "red" }}
-                      />
-                      <span className="ml-2 text-white font-semibold">Fechar</span>
+                      <FontAwesomeIcon icon={faSearch} />
+                      <span className="ml-2 text-white font-semibold">
+                        Pesquisar
+                      </span>
                     </button>
-                  </>
-                ) : (
-                  <button
-                    onClick={toggleInputVisibility}
-                    className="flex items-center py-2 pl-3 pr-4 text-white font-bold bg-transparent md:hover:text-red  hover:underline md:p-0"
-                  >
-                    <FontAwesomeIcon icon={faSearch} />
-                    <span className="ml-2 text-white font-semibold">Pesquisar</span>
-                  </button>
-                )}
-              </div>
+                  )}
+                </div>
+              </li>
             </ul>
           </div>
         </div>
