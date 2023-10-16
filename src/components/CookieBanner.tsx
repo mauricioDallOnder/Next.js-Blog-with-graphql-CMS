@@ -1,18 +1,25 @@
-// components/CookieBanner.tsx
-import React from 'react';
+// components/CookieConsent.tsx
+import React, { useState, useEffect } from 'react';
 
-const CookieBanner: React.FC = () => {
-  const [isVisible, setIsVisible] = React.useState(false);
+const CookieConsent: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [consent, setConsent] = useState({
+    necessary: true,  // Always true, since these are essential cookies.
+    performance: false,
+    marketing: false
+  });
 
-  React.useEffect(() => {
-    const hasConsented = localStorage.getItem('cookie-consent');
-    if (!hasConsented) {
+  useEffect(() => {
+    const storedConsent = localStorage.getItem('cookie-consent');
+    if (!storedConsent) {
       setIsVisible(true);
+    } else {
+      setConsent(JSON.parse(storedConsent));
     }
   }, []);
 
   const handleConsent = () => {
-    localStorage.setItem('cookie-consent', 'true');
+    localStorage.setItem('cookie-consent', JSON.stringify(consent));
     setIsVisible(false);
   };
 
@@ -20,15 +27,29 @@ const CookieBanner: React.FC = () => {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-gray-900 text-white p-4 z-50">
-      <p>
-        Este site usa cookies para melhorar a experiência do usuário. Ao continuar navegando,
-        você concorda com a nossa política de cookies.
-      </p>
+      <p>Usamos cookies para melhorar sua experiência. Selecione os cookies que deseja permitir:</p>
+      <label>
+        <input type="checkbox" checked disabled /> Necessary
+      </label>
+      <label>
+        <input 
+          type="checkbox" 
+          checked={consent.performance} 
+          onChange={() => setConsent(prev => ({ ...prev, performance: !prev.performance }))} 
+        /> Performance
+      </label>
+      <label>
+        <input 
+          type="checkbox" 
+          checked={consent.marketing} 
+          onChange={() => setConsent(prev => ({ ...prev, marketing: !prev.marketing }))} 
+        /> Marketing
+      </label>
       <button onClick={handleConsent} className="mt-2 bg-blue-500 px-4 py-2 rounded">
-        Entendi
+        Salvar preferencias
       </button>
     </div>
   );
 };
 
-export default CookieBanner;
+export default CookieConsent;
