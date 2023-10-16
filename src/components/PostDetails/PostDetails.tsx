@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+//build again
 import React, { ReactNode } from "react";
 import moment from "moment";
 import { IChild, IContentType, PostDetailProps } from "@/interfaces/interfaces";
