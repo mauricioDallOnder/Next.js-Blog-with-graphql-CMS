@@ -25,10 +25,8 @@ const CookiesPolicy = () => {
           ],
           site_name: "CháComSabor",
         }}
-     
       />
       <main className="container mx-auto px-10 mb-16 max-w-5xl flex flex-col justify-start">
-      
         <article
           className="bg-white shadow-lg rounded-lg p-8 mb-8 privacy-section"
           aria-label="Política de Privacidade"
@@ -140,27 +138,59 @@ const CookiesPolicy = () => {
               aos cookies, utilizando para tanto as configurações de seu
               navegador de preferência. Para mais informações sobre como
               proceder em relação à gestão dos cookies nos navegadores acesse:
-           
-                 
-               
             </p>
             <div className="flex-col text-blue-500 font-bold">
-            <a href="https://support.microsoft.com/pt-br/help/17442/windows-internet-explorer-delete-manage-cookies">
-                   1 - Internet Explorer
-                  </a>
-              <br/>
-                  <a href="https://support.mozilla.org/pt-BR/kb/ative-e-desative-os-cookies-que-os-sites-usam">
-                   2 - Mozilla Firefox
-                  </a>
-                  <br/>
-                  <a href="https://support.google.com/accounts/answer/61416?co=GENIE.Platform%3DDesktop&hl=pt-BR">
-                 3 - Google Chrome
-                  </a>
-                  <br/>
-                  <a href="https://support.apple.com/pt-br/guide/safari/sfri11471/mac">
-                 4 - Safari
-                  </a>
+              <a href="https://support.microsoft.com/pt-br/help/17442/windows-internet-explorer-delete-manage-cookies">
+                1 - Internet Explorer
+              </a>
+              <br />
+              <a href="https://support.mozilla.org/pt-BR/kb/ative-e-desative-os-cookies-que-os-sites-usam">
+                2 - Mozilla Firefox
+              </a>
+              <br />
+              <a href="https://support.google.com/accounts/answer/61416?co=GENIE.Platform%3DDesktop&hl=pt-BR">
+                3 - Google Chrome
+              </a>
+              <br />
+              <a href="https://support.apple.com/pt-br/guide/safari/sfri11471/mac">
+                4 - Safari
+              </a>
             </div>
+          </section>
+          <section aria-labelledby="UserRights">
+            <h2
+              id="UserRights"
+              className="text-black mt-4 mb-4 text-xl font-bold"
+            >
+              Direitos do Usuário
+            </h2>
+            <p className="text-black text-justify text-ls mb-2">
+              De acordo com o GDPR e CCPA/CPRA, você tem vários direitos em
+              relação aos seus dados:
+              <ul>
+                <li>Direito de acesso aos seus dados</li>
+                <li>Direito de retificação dos seus dados</li>
+                <li>Direito de exclusão dos seus dados</li>
+                <li>Direito de restringir o processamento dos seus dados</li>
+                <li>Direito de objeção ao processamento dos seus dados</li>
+                <li>Direito à portabilidade dos dados</li>
+              </ul>
+            </p>
+          </section>
+
+          <section aria-labelledby="ExerciseRights">
+            <h2
+              id="ExerciseRights"
+              className="text-black mt-4 mb-4 text-xl font-bold"
+            >
+              Como Exercer Seus Direitos
+            </h2>
+            <p className="text-black text-justify text-ls mb-2">
+              Se você deseja exercer qualquer um dos direitos mencionados acima,
+              entre em contato conosco através do email "londer11@icloud.com".
+              Estamos comprometidos em responder a todas as solicitações em um
+              prazo de 30 dias.
+            </p>
           </section>
         </article>
       </main>

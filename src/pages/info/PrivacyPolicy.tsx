@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import { NextSeo } from "next-seo";
 import { Header } from "@/components";
@@ -5,15 +6,15 @@ import { Header } from "@/components";
 const PrivacyPolicy = () => {
   return (
     <>
-       <NextSeo
+      <NextSeo
         title="Política de Privacidade"
         description="Descubra como tratamos seus dados pessoais."
         canonical="https://cha-com-sabor.vercel.app/politica-de-privacidade"
         openGraph={{
           type: "website",
           url: "https://cha-com-sabor.vercel.app/politica-de-privacidade",
-          title: 'Política de Privacidade',
-          description: 'Descubra como tratamos seus dados pessoais.',
+          title: "Política de Privacidade",
+          description: "Descubra como tratamos seus dados pessoais.",
           images: [
             {
               url: "https://firebasestorage.googleapis.com/v0/b/geradorimagens-27342.appspot.com/o/blog-cha%2Fcha.jpeg?alt=media&token=06fbdb29-4e42-4e71-ba89-6b58a5ecb3b9&_gl=1*5cjsr3*_ga*MTA2NDY5MTI4MS4xNjk3MzkyMDc0*_ga_CW55HF8NVT*MTY5NzM5MjA3NC4xLjEuMTY5NzM5MjI0NS4yNy4wLjA.",
@@ -26,14 +27,12 @@ const PrivacyPolicy = () => {
         }}
       />
       <main className="container mx-auto px-10 mb-16 max-w-5xl flex flex-col justify-start">
-      
         <article
           className="bg-white shadow-lg rounded-lg p-8 mb-8 privacy-section"
           aria-label="Política de Privacidade"
         >
           <h1 className="section-title text-black mt-4 mb-4 text-2xl font-bold">
             {" "}
-           
             Política de Privacidade
           </h1>
           <section aria-labelledby="legalNotice">
@@ -259,20 +258,40 @@ const PrivacyPolicy = () => {
             </ul>
           </section>
 
-          <section className="privacy-subsection">
-            <h3 className="subsection-title text-black text-xl font-bold">
-              Seus direitos sobre os dados pessoais
-            </h3>
-            <p className="subsection-text text-black text-justify mb-2">
-              Seus direitos incluem:
+          <section aria-labelledby="UserRights">
+            <h2
+              id="UserRights"
+              className="text-black mt-4 mb-4 text-xl font-bold"
+            >
+              Direitos do Usuário
+            </h2>
+            <p className="text-black text-justify text-ls mb-2">
+              De acordo com o GDPR e CCPA/CPRA, você tem vários direitos em
+              relação aos seus dados:
+              <ul>
+                <li>Direito de acesso aos seus dados</li>
+                <li>Direito de retificação dos seus dados</li>
+                <li>Direito de exclusão dos seus dados</li>
+                <li>Direito de restringir o processamento dos seus dados</li>
+                <li>Direito de objeção ao processamento dos seus dados</li>
+                <li>Direito à portabilidade dos dados</li>
+              </ul>
             </p>
-            <ul className="subsection-list list-disc pl-5 pb-2 mb-2">
-              <li>Acesso e cópia de seus dados</li>
-              <li>Anonimização e bloqueio de dados desnecessários</li>
-              <li>Eliminação de dados tratados com consentimento</li>
-              <li>Revogação do consentimento</li>
-              <li>Oposição a tratamentos não consentidos</li>
-            </ul>
+          </section>
+
+          <section aria-labelledby="ExerciseRights">
+            <h2
+              id="ExerciseRights"
+              className="text-black mt-4 mb-4 text-xl font-bold"
+            >
+              Como Exercer Seus Direitos
+            </h2>
+            <p className="text-black text-justify text-ls mb-2">
+              Se você deseja exercer qualquer um dos direitos mencionados acima,
+              entre em contato conosco através do email "londer11@icloud.com".
+              Estamos comprometidos em responder a todas as solicitações em um
+              prazo de 30 dias.
+            </p>
           </section>
 
           <section className="privacy-subsection">
