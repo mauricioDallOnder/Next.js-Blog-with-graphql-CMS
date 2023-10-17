@@ -1,39 +1,52 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Slider from 'react-slick';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import { IIPostsResponse } from '@/interfaces/interfaces';
 
-const FeaturedPostCarousel = ({ posts }:IIPostsResponse) => {
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    adaptiveHeight: true,
-    autoplay: true,
-    autoplaySpeed: 3000,
-  };
-
+const FeaturedPostCarousel = ({ posts }: IIPostsResponse) => {
   return (
     <section className='mb-2'>
-      <Slider {...settings}>
+      <Swiper
+       modules={[Navigation, Pagination, Scrollbar, A11y]}
+      spaceBetween={50}
+      slidesPerView={1}
+     navigation={true}
+     autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+        }}
+        loop={true}
+        speed={500}
+      pagination={{ clickable: true }}
+      scrollbar={{ draggable: true }}
+  
+      >
         {posts.map((post) => (
-          <Link href={`/post/${post.slug}`} key={post.title}>
-          <article  className="relative h-72">
-            <Image fill objectFit='cover' className="absolute rounded-lg bg-center bg-no-repeat bg-cover shadow-md inline-block w-full h-72" src={post.featuredImage.url} alt={post.title}  />
-            <div className="absolute rounded-lg bg-center bg-gradient-to-b opacity-50 from-gray-400 via-gray-700 to-black w-full h-72" />
-            <div className="flex flex-col rounded-lg p-4 items-start justify-center absolute w-full h-full pl-5">
-              <h2 className="text-white  text-shadow font-semibold text-3xl pl-5 ">{post.title}</h2> 
-              <p className="text-white  text-shadow font-semibold text-md pl-5 ">{post.excerpt}</p>
-              <div className="flex items-center absolute bottom-5 w-full justify-start pl-5">
-              </div>
-            </div>
-          </article>
-          </Link>
+          <SwiperSlide key={post.title}>
+            <Link href={`/post/${post.slug}`} aria-label={post.title} className="block relative h-72">
+              
+                <Image 
+                  src={post.featuredImage.url} 
+                  alt={post.title} 
+                  layout='fill' 
+                  objectFit='cover' 
+                  className="absolute rounded-lg z-0" 
+                />
+                <div className="absolute bottom-0 bg-black bg-opacity-50 text-white p-4 w-full">
+                  <h2 className="font-semibold text-3xl">{post.title}</h2>
+                  <p className="text-md">{post.excerpt}</p>
+                </div>
+              
+            </Link>
+          </SwiperSlide>
         ))}
-      </Slider>
+      </Swiper>
     </section>
   );
 };
