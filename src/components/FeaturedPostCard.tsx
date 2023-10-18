@@ -39,8 +39,8 @@ const FeaturedPostCarousel = ({ posts }: IIPostsResponse) => {
                   className="transition-transform duration-500 ease-out transform hover:scale-110" 
                 />
                 <div className="absolute bottom-0 bg-black bg-opacity-50 text-white p-4 w-full">
-                  <h2 className="font-semibold text-3xl">{post.title}</h2>
-                  <p className="text-md">{post.excerpt}</p>
+                  <h2 className="font-bold text-3xl">{post.title}</h2>
+                  <p className="text-md font-bold">{post.excerpt}</p>
                 </div>
               </figure>
             </Link>

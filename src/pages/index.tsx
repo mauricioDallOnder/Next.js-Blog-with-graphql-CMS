@@ -10,7 +10,7 @@ import {
   faForward
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-const POSTS_PER_PAGE = 3;
+const POSTS_PER_PAGE = 5;
 export default function Home({
   posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -32,7 +32,7 @@ export default function Home({
           content="Um blog de com dicas de chás,saúde e bem estar."
         />
         <meta name="keywords" content="blog, chá, saúde, bem estar" />
-        <meta property="og:title" content="Blog de Chás" />
+        <meta property="og:title" content="CháComSabor" />
         <meta
           property="og:description"
           content="Um blog de com dicas de chás,saúde e bem estar."
@@ -42,7 +42,7 @@ export default function Home({
           content="https://firebasestorage.googleapis.com/v0/b/geradorimagens-27342.appspot.com/o/blog-cha%2Fcha.jpeg?alt=media&token=06fbdb29-4e42-4e71-ba89-6b58a5ecb3b9&_gl=1*5cjsr3*_ga*MTA2NDY5MTI4MS4xNjk3MzkyMDc0*_ga_CW55HF8NVT*MTY5NzM5MjA3NC4xLjEuMTY5NzM5MjI0NS4yNy4wLjA."
         />
         <meta property="og:url" content="https://cha-com-sabor.vercel.app" />
-        <meta name="twitter:card" content="summary_large_image" />
+        
       </Head>
       <main className="container mx-auto px-10 mb-8">
         <FeaturedPostCarousel posts={posts} />
@@ -68,6 +68,7 @@ export default function Home({
             disabled={currentPage === 1}
             className={`bg-blue-500 text-white py-2 px-4 rounded-lg focus:outline-none hover:bg-blue-600 transition 
             ${currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""}`}
+            aria-label="página anterior"
           >
             <FontAwesomeIcon icon={faBackward} />
           </button>
@@ -81,6 +82,7 @@ export default function Home({
             disabled={currentPage === totalPages}
             className={`bg-blue-500 text-white py-2 px-4 rounded-lg focus:outline-none hover:bg-blue-600 transition 
       ${currentPage === totalPages ? "opacity-50 cursor-not-allowed" : ""}`}
+      aria-label="próxima pagina"
           >
             <FontAwesomeIcon icon={faForward} />
           </button>

@@ -3,8 +3,7 @@ import moment from "moment";
 import Link from "next/link";
 import { AdjacentPostCardProps } from "@/interfaces/interfaces";
 import Image from "next/image";
-import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 const AdjacentPostCard = ({ post, position }: AdjacentPostCardProps) => (
   <article className="relative w-full h-72 rounded-lg shadow-md">
@@ -34,20 +33,18 @@ const AdjacentPostCard = ({ post, position }: AdjacentPostCardProps) => (
         className="z-10 cursor-pointer absolute w-full h-full"
       />
     </Link>
-    {position === "LEFT" && (
-      <button
-        aria-label="Previous post"
-        className="arrow-btn absolute top-[144px] left-4 rounded-full bg-pink-600 p-3"
-      >
-        <FontAwesomeIcon icon={faArrowLeft} style={{color: "#fdffe8",}} />
+    {position === 'LEFT' && (
+      <button className="absolute arrow-btn bottom-5 text-center py-3 cursor-pointer bg-pink-600 left-4 rounded-full" aria-label="artigo anterior">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6  text-white w-full" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
       </button>
     )}
-    {position === "RIGHT" && (
-      <button
-        aria-label="Next post"
-        className="arrow-btn absolute top-[144px] right-4 rounded-full bg-pink-600 p-3"
-      >
-        <FontAwesomeIcon icon={faArrowRight} style={{color: "#fdffe8",}} />
+    {position === 'RIGHT' && (
+      <button className="absolute arrow-btn bottom-5 text-center py-3 cursor-pointer bg-pink-600 right-4 rounded-full" aria-label="próximo artigo">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 text-white w-full" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
       </button>
     )}
   </article>
