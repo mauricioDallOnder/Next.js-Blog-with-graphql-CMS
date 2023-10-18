@@ -36,6 +36,7 @@ const FeaturedPostCarousel = ({ posts }: IIPostsResponse) => {
                   alt={post.title} 
                   layout='fill' 
                   objectFit='cover' 
+                  priority={true}
                   sizes="(min-width: 1540px) 1456px, (min-width: 1300px) 1200px, (min-width: 1160px) 944px, (min-width: 800px) 688px, (min-width: 660px) 560px, (min-width: 440px) 360px, 220px"
                   className="transition-transform duration-500 ease-out transform hover:scale-110" 
                 />

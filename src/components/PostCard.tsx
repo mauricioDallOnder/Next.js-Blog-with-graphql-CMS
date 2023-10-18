@@ -6,7 +6,7 @@ import Image from "next/image";
 const PostCard = ({ title, excerpt, featuredImage, slug, createdAt, author }: IPostCardProps) => {
   return (
     <article className="bg-white shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8">
-      <div className="relative overflow-hidden shadow-md pb-80 mb-6">
+      <figure className="relative overflow-hidden shadow-md pb-80 mb-6">
         <Image
           src={featuredImage.url}
           alt={`Imagem de destaque do post "${title}"`}
@@ -17,7 +17,7 @@ const PostCard = ({ title, excerpt, featuredImage, slug, createdAt, author }: IP
           quality={60}
           sizes="(min-width: 1540px) 1456px, (min-width: 1300px) 1200px, (min-width: 1160px) 944px, (min-width: 800px) 688px, (min-width: 660px) 560px, (min-width: 440px) 360px, 220px"
         />
-      </div>
+      </figure>
       <h1 className="transition duration-700 text-center mb-8 cursor-pointer hover:text-pink-600 text-3xl font-semibold">
         <Link href={`/post/${slug}`} aria-label={`Leia o post "${title}"`}>
           {title}
