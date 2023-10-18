@@ -15,6 +15,7 @@ const PostCard = ({ title, excerpt, featuredImage, slug, createdAt, author }: IP
           className="shadow-lg rounded-t-lg lg:rounded-lg"
           priority={false}
           quality={60}
+          sizes="(min-width: 1540px) 1456px, (min-width: 1300px) 1200px, (min-width: 1160px) 944px, (min-width: 800px) 688px, (min-width: 660px) 560px, (min-width: 440px) 360px, 220px"
         />
       </div>
       <h1 className="transition duration-700 text-center mb-8 cursor-pointer hover:text-pink-600 text-3xl font-semibold">
