@@ -13,6 +13,7 @@ const PostCard = ({ title, excerpt, featuredImage, slug, createdAt, author }: IP
           layout="fill"
           objectFit="cover"
           className="shadow-lg rounded-t-lg lg:rounded-lg"
+          priority={true}
         />
       </div>
       <h1 className="transition duration-700 text-center mb-8 cursor-pointer hover:text-pink-600 text-3xl font-semibold">
