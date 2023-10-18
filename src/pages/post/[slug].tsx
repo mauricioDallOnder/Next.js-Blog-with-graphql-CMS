@@ -2,9 +2,9 @@
 import { GetServerSideProps } from "next";
 import { IPostDetails } from "@/interfaces/interfaces";
 import { getPostDetails } from "@/services";
-import { Author, Comments, CommentsForm, Header, PostWidget } from "@/components";
+import { Author, Comments, CommentsForm, DynamicAdjacentPostsContainer, Header, PostWidget } from "@/components";
 import PostDetail from "@/components/PostDetails/PostDetails";
-import AdjacentPostsContainer from "@/components/Sidebar/AdjacentPost";
+
 import Head from 'next/head'; // Importar o Head
 import { NextSeo } from 'next-seo'; // Importar o NextSeo
 
@@ -40,7 +40,7 @@ const PostPage: React.FC<PostPageProps> = ({ post }) => {
           <article className="col-span-1 lg:col-span-8"> 
             <PostDetail post={post} />
             <section> 
-              <AdjacentPostsContainer createdAt={post.createdAt} slug={post.slug}  />
+              <DynamicAdjacentPostsContainer createdAt={post.createdAt} slug={post.slug}  />
               <CommentsForm post={post} />
               <Comments slug={post.slug} />
             </section>
