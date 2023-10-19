@@ -9,8 +9,8 @@ const AdjacentPostCard = ({ post, position }: AdjacentPostCardProps) => (
   <article className="relative w-full h-72 rounded-lg shadow-md">
     <figure className="absolute rounded-lg w-full h-72">
       <Image
-        fill
-        objectFit="cover"
+       layout="fill"
+       objectFit='cover'
         src={post.featuredImage.url}
         alt={`Background image for post titled ${post.title}`}
       />
