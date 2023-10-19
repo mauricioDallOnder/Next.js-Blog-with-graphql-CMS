@@ -70,7 +70,7 @@ export default SearchPage;
 export const getServerSideProps: GetServerSideProps<SearchPageProps> = async (context) => {
   const posts = await getPosts();
   const searchTerm = context.query.slug as string;
-
+console.log(posts)
   const resultsFiltered = posts.filter(
     (post) =>
       post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
