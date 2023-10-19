@@ -82,6 +82,7 @@ export const getStaticProps: GetServerSideProps<PostPageProps> = async (
     props: {
       post,
     },
+    revalidate: 60 * 60 * 1, // 1 hours
   };
 };
 export default PostPage;
