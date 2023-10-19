@@ -1,11 +1,15 @@
-import { PostCard, PostWidget, Categories} from "../components";
+import { PostCard, PostWidget, Categories } from "../components";
 import type { InferGetStaticPropsType, GetStaticProps } from "next";
 import { getPosts } from "@/services";
 import FeaturedPostCarousel from "@/components/FeaturedPostCard";
 import { IPostCardProps } from "@/interfaces/interfaces";
 import Head from "next/head";
 import {useState } from "react";
-
+import {
+  faBackward,
+  faForward
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const POSTS_PER_PAGE = 3;
 export default function Home({
   posts,
@@ -66,9 +70,7 @@ export default function Home({
             ${currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""}`}
             aria-label="página anterior"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6  text-white w-full" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-        </svg>
+            <FontAwesomeIcon icon={faBackward} />
           </button>
           <span className="text-lg font-semibold text-white">
             página {currentPage} de {totalPages}
@@ -82,9 +84,7 @@ export default function Home({
       ${currentPage === totalPages ? "opacity-50 cursor-not-allowed" : ""}`}
       aria-label="próxima pagina"
           >
-             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 text-white w-full" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-        </svg>
+            <FontAwesomeIcon icon={faForward} />
           </button>
         </section>
       </main>
