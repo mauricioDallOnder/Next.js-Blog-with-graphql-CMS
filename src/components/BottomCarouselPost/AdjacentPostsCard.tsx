@@ -4,7 +4,7 @@ import Link from "next/link";
 import { AdjacentPostCardProps } from "@/interfaces/interfaces";
 import Image from "next/legacy/image";
 
-
+//fix issues
 const AdjacentPostCard = ({ post, position }: AdjacentPostCardProps) => (
   <article className="relative w-full h-72 rounded-lg shadow-md">
     <figure className="absolute rounded-lg w-full h-72">
