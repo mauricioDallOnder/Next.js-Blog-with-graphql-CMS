@@ -1,11 +1,9 @@
 // src/pages/posts/[slug].tsx
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import { IPostDetails } from "@/interfaces/interfaces";
-import { getPostDetails } from "@/services";
+import { getPostDetails, getPosts } from "@/services";
 import { Author, Comments, CommentsForm, DynamicAdjacentPostsContainer, Header, PostWidget } from "@/components";
 import PostDetail from "@/components/PostDetails/PostDetails";
-
-import Head from 'next/head'; // Importar o Head
 import { NextSeo } from 'next-seo'; // Importar o NextSeo
 
 interface PostPageProps {
@@ -16,10 +14,7 @@ const PostPage: React.FC<PostPageProps> = ({ post }) => {
   const contentText = post.content.text || post.excerpt;
   return (
     <>
-    <Head>
-        <title>{post.title} - Blog de Chás</title>
-        <meta name="description" content={contentText} />
-      </Head>
+   
       <NextSeo
         openGraph={{
           title: post.title,
@@ -57,7 +52,21 @@ const PostPage: React.FC<PostPageProps> = ({ post }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps<PostPageProps> = async (
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const posts = await getPosts();  
+  const paths = posts.map(post => ({
+    params: { slug: post.slug }
+  }));
+
+  return {
+    paths,
+    fallback: 'blocking',  
+  };
+};
+
+
+export const getStaticProps: GetServerSideProps<PostPageProps> = async (
   context
 ) => {
   const { slug } = context.params as { slug: string };
@@ -75,6 +84,5 @@ export const getServerSideProps: GetServerSideProps<PostPageProps> = async (
     },
   };
 };
-
 export default PostPage;
 
