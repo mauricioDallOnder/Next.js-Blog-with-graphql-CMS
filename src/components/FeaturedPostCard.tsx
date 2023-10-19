@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -34,8 +34,8 @@ const FeaturedPostCarousel = ({ posts }: IIPostsResponse) => {
                 <Image 
                   src={post.featuredImage.url} 
                   alt={post.title} 
-                  layout='fill' 
-                  objectFit='cover' 
+                  layout="fill"
+                  objectFit='cover'
                   priority={false}
                   quality={70}
                   sizes="(min-width: 1540px) 1456px, (min-width: 1300px) 1200px, (min-width: 1160px) 944px, (min-width: 800px) 688px, (min-width: 660px) 560px, (min-width: 440px) 360px, 220px"

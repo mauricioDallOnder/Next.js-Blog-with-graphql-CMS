@@ -3,7 +3,7 @@
 import React, { ReactNode } from "react";
 import moment from "moment";
 import { IChild, IContentType, PostDetailProps } from "@/interfaces/interfaces";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Calendar from "@/svg/calendar";
 
 const PostDetail: React.FC<PostDetailProps> = ({ post }) => {

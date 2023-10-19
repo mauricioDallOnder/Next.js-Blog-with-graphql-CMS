@@ -1,7 +1,7 @@
 import { IPostCardProps } from "@/interfaces/interfaces";
 import moment from "moment";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 const PostCard = ({ title, excerpt, featuredImage, slug, createdAt, author }: IPostCardProps) => {
   return (
@@ -11,7 +11,7 @@ const PostCard = ({ title, excerpt, featuredImage, slug, createdAt, author }: IP
           src={featuredImage.url}
           alt={`Imagem de destaque do post "${title}"`}
           layout="fill"
-          objectFit="cover"
+          objectFit='cover'
           className="shadow-lg rounded-t-lg lg:rounded-lg"
           priority={false}
           quality={70}
@@ -50,7 +50,7 @@ const PostCard = ({ title, excerpt, featuredImage, slug, createdAt, author }: IP
       <div className="text-center">
         <Link href={`/post/${slug}`}>
           <button className="transition duration-500 ease transform hover:-translate-y-1 inline-block bg-pink-600 text-lg font-medium rounded-full text-white px-8 py-3 cursor-pointer" aria-label={`Continue lendo o post "${title}"`} >
-            clique aqui para continuar a leitura
+            saiba mais..
           </button>
         </Link>
       </div>

@@ -2,7 +2,7 @@ import React from "react";
 import moment from "moment";
 import Link from "next/link";
 import { AdjacentPostCardProps } from "@/interfaces/interfaces";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 
 const AdjacentPostCard = ({ post, position }: AdjacentPostCardProps) => (

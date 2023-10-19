@@ -2,15 +2,15 @@ import React from "react";
 import moment from "moment";
 import Link from "next/link";
 import { AdjacentPostCardProps } from "@/interfaces/interfaces";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 
 const AdjacentPostCard = ({ post, position }: AdjacentPostCardProps) => (
   <article className="relative w-full h-72 rounded-lg shadow-md">
     <figure className="absolute rounded-lg w-full h-72">
       <Image
-        fill
-        objectFit="cover"
+        layout="fill"
+        objectFit='cover'
         src={post.featuredImage.url}
         alt={`Background image for post titled ${post.title}`}
       />

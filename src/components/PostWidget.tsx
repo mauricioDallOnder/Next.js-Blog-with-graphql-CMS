@@ -4,7 +4,7 @@ import moment from "moment";
 import Link from "next/link";
 import { getRecentPosts, getSimilarPosts } from "@/services";
 import { IPostCardProps, PostWidgetProps } from "@/interfaces/interfaces";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 const PostWidget: React.FC<PostWidgetProps> = ({ categories, slug }) => {
   const [relatedPosts, setRelatedPosts] = useState<IPostCardProps[]>([]);

@@ -2,7 +2,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import { NextSeo } from "next-seo";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { Header } from "@/components";
 
 const About = () => {

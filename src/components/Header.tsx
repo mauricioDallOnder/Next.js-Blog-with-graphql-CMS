@@ -9,7 +9,7 @@ import {
   faCircleChevronDown,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { faSearch } from "@fortawesome/free-solid-svg-icons"; // Importe o ícone de fechar
 
 const Header: React.FC = () => {
