@@ -2,7 +2,7 @@ import { IPostCardProps } from "@/interfaces/interfaces";
 import moment from "moment";
 import Link from "next/link";
 import Image from "next/legacy/image";
-
+//update
 const PostCard = ({ title, excerpt, featuredImage, slug, createdAt, author }: IPostCardProps) => {
   return (
     <article className="bg-white shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8">
