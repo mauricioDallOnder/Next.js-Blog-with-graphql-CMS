@@ -20,25 +20,25 @@ This is a blog built with Next.js and TypeScript, using Firebase Firestore as it
 
 1. Clone this repository:
 
-\`\`\`
+<code>
 git clone [YOUR_REPOSITORY_URL]
-\`\`\`
+</code>
 
 2. Install the dependencies:
 
-\`\`\`
+<code>
 npm install
-\`\`\`
+</code>
 
 3. Set up your environment variables with Firebase credentials.
 
 4. Run the project:
 
-\`\`\`
+<code>
 npm run dev
-\`\`\`
+</code>
 
-Now, the blog should be running locally at `http://localhost:3000`.
+Now, the blog should be running locally at <code>http://localhost:3000</code>
 
 ## Contribution
 
