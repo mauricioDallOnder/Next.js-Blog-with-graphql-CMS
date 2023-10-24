@@ -21,7 +21,7 @@ This is a blog built with Next.js and TypeScript, using Firebase Firestore as it
 1. Clone this repository:
 
 <code>
-git clone [YOUR_REPOSITORY_URL]
+git clone https://github.com/mauricioDallOnder/Next.js-Blog-with-Firebase-Firestore.git
 </code>
 
 2. Install the dependencies:
