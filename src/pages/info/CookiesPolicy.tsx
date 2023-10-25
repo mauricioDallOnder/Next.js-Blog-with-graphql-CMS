@@ -1,9 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from "react";
-import { NextSeo } from "next-seo";
-import { Header } from "@/components";
 
-const CookiesPolicy = () => {
+import { NextSeo } from "next-seo";
+
+
+export default function CookiesPolicy () {
   return (
     <>
       <NextSeo
@@ -198,4 +198,4 @@ const CookiesPolicy = () => {
   );
 };
 
-export default CookiesPolicy;
+

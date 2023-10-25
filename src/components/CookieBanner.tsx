@@ -1,5 +1,5 @@
 // components/CookieConsentBanner.tsx
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import CookieConsent, {
   getCookieConsentValue,
   Cookies,
@@ -7,7 +7,7 @@ import CookieConsent, {
 import { setLocalStorage } from "@/lib/storageHelper";
 import Link from "next/link";
 
-const CookieConsentBanner: React.FC = () => {
+export default function CookieConsentBanner () {
   // Verificar o valor de consentimento do cookie no carregamento do componente
   const hasConsent = getCookieConsentValue("myCookieConsent");
 
@@ -104,5 +104,5 @@ const CookieConsentBanner: React.FC = () => {
   );
 };
 
-export default CookieConsentBanner;
+
 // <Link

@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from "react";
+import { useEffect} from "react";
 import { submitComment } from "../../services";
 import { useForm } from "react-hook-form";
 import { ICommentSubmit, PostDetailProps } from "@/interfaces/interfaces";

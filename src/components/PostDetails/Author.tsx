@@ -1,8 +1,7 @@
 import { PostDetailProps } from '@/interfaces/interfaces';
-import React from 'react';
-import Image from "next/legacy/image";
+import Image from "next/image";
 
-const Author: React.FC<PostDetailProps> = ({ post }) => {
+export default function Author({ post }:PostDetailProps) {
   return (
     <article className="bg-white shadow-lg rounded-lg p-8 mb-8"> {/* <article> tag adicionada */}
       <h2 className="text-xl mb-8 font-semibold border-b pb-4"> {/* h2 é mais semântico aqui */}
@@ -26,4 +25,3 @@ const Author: React.FC<PostDetailProps> = ({ post }) => {
   );
 }
 
-export default Author;

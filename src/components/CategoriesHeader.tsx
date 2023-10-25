@@ -1,12 +1,12 @@
 import { faFolderOpen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+
 
 type CategoriesHeaderProps = {
   name: string
 };
+export default function CategoriesHeader({ name }:CategoriesHeaderProps){
 
-const CategoriesHeader: React.FC<CategoriesHeaderProps> = ({ name }) => {
   return (
     <section className="bg-white shadow-lg rounded-lg mb-8"> 
       <div className="bg-[#3399cc] h-[5px]"></div>
@@ -23,4 +23,4 @@ const CategoriesHeader: React.FC<CategoriesHeaderProps> = ({ name }) => {
   );
 };
 
-export default CategoriesHeader;
+

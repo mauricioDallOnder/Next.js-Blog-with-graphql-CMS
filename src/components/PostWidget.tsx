@@ -1,12 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import moment from "moment";
 import Link from "next/link";
 import { getRecentPosts, getSimilarPosts } from "@/services";
 import { IPostCardProps, PostWidgetProps } from "@/interfaces/interfaces";
-import Image from "next/legacy/image";
-
-const PostWidget: React.FC<PostWidgetProps> = ({ categories, slug }) => {
+import Image from "next/image";
+export default function PostWidget({ categories, slug }: PostWidgetProps) {
   const [relatedPosts, setRelatedPosts] = useState<IPostCardProps[]>([]);
 
   useEffect(() => {
@@ -60,6 +59,4 @@ const PostWidget: React.FC<PostWidgetProps> = ({ categories, slug }) => {
       ))}
     </aside>
   );
-};
-
-export default PostWidget;
+}

@@ -61,3 +61,53 @@ a {
 * {
   box-sizing: border-box;
 }
+
+
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  align-items: center;
+}
+
+.page-item {
+  margin: 0 5px;
+  position: relative;
+}
+
+.page-link {
+  padding: 5px 12px;
+  border: none; 
+  color: white; 
+  text-decoration: none;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1); /* Fundo translúcido */
+  transition: background-color 0.3s, transform 0.2s;
+  font-weight: 600; /* Tornando o texto um pouco mais bold */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Uma leve sombra para dar profundidade */
+}
+
+.page-link:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Um fundo um pouco mais opaco no hover */
+  transform: translateY(-2px); /* Uma leve elevação no hover */
+}
+
+.active .page-link {
+  background: #eb1005; /* Usando a cor do meio do seu gradiente para a página ativa */
+  box-shadow: 0 4px 12px rgba(1, 177, 142, 0.3); /* Uma sombra mais proeminente para a página ativa */
+}
+
+/* Adicionando um pequeno indicador abaixo do número da página ativa */
+.active .page-item::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+

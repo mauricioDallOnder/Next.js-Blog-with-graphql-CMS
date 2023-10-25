@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Image from "next/legacy/image";
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -9,7 +9,7 @@ import 'swiper/css/scrollbar';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import { IIPostsResponse } from '@/interfaces/interfaces';
 
-const FeaturedPostCarousel = ({ posts }: IIPostsResponse) => {
+export default function FeaturedPostCarousel ({ posts }: IIPostsResponse){
   return (
     <section className='mb-2'>
       <Swiper
@@ -54,4 +54,4 @@ const FeaturedPostCarousel = ({ posts }: IIPostsResponse) => {
   );
 };
 
-export default FeaturedPostCarousel;
+

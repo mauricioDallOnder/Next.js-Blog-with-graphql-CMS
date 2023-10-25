@@ -3,7 +3,6 @@ import { IPostCardProps } from "@/interfaces/interfaces";
 import { getCategories, getPostsByCategory } from "@/services";
 import { Categories, PostCard, PostWidget } from "@/components";
 import CategoriesHeader from "@/components/CategoriesHeader";
-import Head from "next/head";
 import { NextSeo } from "next-seo";
 import { useState } from "react";
 import { faBackward, faForward } from "@fortawesome/free-solid-svg-icons";
@@ -25,10 +24,7 @@ export default function CategoryPage({
   );
   return (
     <>
-      <Head>
-        <title>{selectedCategory} - Blog de Chás</title>
-        <meta name="description" content={`Posts sobre ${selectedCategory}`} />
-      </Head>
+     
       <NextSeo
         openGraph={{
           title: selectedCategory,

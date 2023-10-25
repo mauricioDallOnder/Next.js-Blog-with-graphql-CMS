@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { getCategories } from '../services';
-import { useRouter } from 'next/router';
-import Link from 'next/link';  // Importado o Link do Next.js
 
-const Categories: React.FC = () => {
+import Link from 'next/link'; 
+
+export default function Categories() {
   const [categories, setCategories] = useState<{ name: string; slug: string }[]>([]);
-  const router = useRouter();
+ 
 
   useEffect(() => {
     getCategories().then((newCategories) => {
@@ -33,4 +33,4 @@ const Categories: React.FC = () => {
   );
 };
 
-export default Categories;
+

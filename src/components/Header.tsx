@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { ChangeEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { getCategories } from "../services";
 import { useRouter } from "next/router";
@@ -11,8 +11,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import { faSearch } from "@fortawesome/free-solid-svg-icons"; // Importe o ícone de fechar
+export default function Header(){
 
-const Header: React.FC = () => {
   const [categories, setCategories] = useState<
     { name: string; slug: string }[]
   >([]);
@@ -218,5 +218,5 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header;
+
 //fix issues

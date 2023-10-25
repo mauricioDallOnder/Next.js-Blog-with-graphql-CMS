@@ -1,9 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from "react";
-import { NextSeo } from "next-seo";
-import { Header } from "@/components";
 
-const PrivacyPolicy = () => {
+import { NextSeo } from "next-seo";
+
+export default function PrivacyPolicy () {
   return (
     <>
       <NextSeo
@@ -319,4 +318,4 @@ const PrivacyPolicy = () => {
   );
 };
 
-export default PrivacyPolicy;
+

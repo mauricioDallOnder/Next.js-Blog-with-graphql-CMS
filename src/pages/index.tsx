@@ -4,24 +4,27 @@ import { getPosts } from "@/services";
 import FeaturedPostCarousel from "@/components/FeaturedPostCard";
 import { IPostCardProps } from "@/interfaces/interfaces";
 import Head from "next/head";
-import {useState } from "react";
-import {
-  faBackward,
-  faForward
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-const POSTS_PER_PAGE = 3;
+import { useState } from "react";
+import ReactPaginate from 'react-paginate';
+const POSTS_PER_PAGE = 5;
 export default function Home({
   posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [currentPage, setCurrentPage] = useState(1);
 
-  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+  const pageCount = Math.ceil(posts.length / POSTS_PER_PAGE);
 
   const paginatedPosts = posts.slice(
     (currentPage - 1) * POSTS_PER_PAGE,
     currentPage * POSTS_PER_PAGE
   );
+
+  // Handler para mudar a página
+  // Handler para mudar a página
+const handlePageClick = (data: { selected: number }) => {
+  setCurrentPage(data.selected + 1);
+};
+
 
   return (
     <>
@@ -42,7 +45,6 @@ export default function Home({
           content="https://firebasestorage.googleapis.com/v0/b/geradorimagens-27342.appspot.com/o/blog-cha%2Fcha.jpeg?alt=media&token=06fbdb29-4e42-4e71-ba89-6b58a5ecb3b9&_gl=1*5cjsr3*_ga*MTA2NDY5MTI4MS4xNjk3MzkyMDc0*_ga_CW55HF8NVT*MTY5NzM5MjA3NC4xLjEuMTY5NzM5MjI0NS4yNy4wLjA."
         />
         <meta property="og:url" content="https://cha-com-sabor.vercel.app" />
-        
       </Head>
       <main className="container mx-auto px-10 mb-8">
         <FeaturedPostCarousel posts={posts} />
@@ -62,31 +64,29 @@ export default function Home({
 
         {/* Controles de paginação */}
 
-        <section className="flex justify-center items-center mt-8 space-x-4">
-          <button
-            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-            disabled={currentPage === 1}
-            className={`bg-blue-500 text-white py-2 px-4 rounded-lg focus:outline-none hover:bg-blue-600 transition 
-            ${currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""}`}
-            aria-label="página anterior"
-          >
-            <FontAwesomeIcon icon={faBackward} />
-          </button>
-          <span className="text-lg font-semibold text-white">
-            página {currentPage} de {totalPages}
-          </span>
-          <button
-            onClick={() =>
-              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-            }
-            disabled={currentPage === totalPages}
-            className={`bg-blue-500 text-white py-2 px-4 rounded-lg focus:outline-none hover:bg-blue-600 transition 
-      ${currentPage === totalPages ? "opacity-50 cursor-not-allowed" : ""}`}
-      aria-label="próxima pagina"
-          >
-            <FontAwesomeIcon icon={faForward} />
-          </button>
-        </section>
+        <section className="flex justify-center items-center mt-8">
+        <ReactPaginate
+        
+         nextLabel="próximo>"
+         onPageChange={handlePageClick}
+         pageRangeDisplayed={3}
+         marginPagesDisplayed={2}
+         pageCount={pageCount}
+         previousLabel="<anterior"
+         pageClassName="page-item"
+         pageLinkClassName="page-link"
+         previousClassName="page-item"
+         previousLinkClassName="page-link"
+         nextClassName="page-item"
+         nextLinkClassName="page-link"
+         breakLabel="..."
+         breakClassName="page-item"
+         breakLinkClassName="page-link"
+         containerClassName="pagination"
+         activeClassName="active"
+         renderOnZeroPageCount={null}
+        />
+      </section>
       </main>
     </>
   );
@@ -98,3 +98,4 @@ export const getStaticProps: GetStaticProps<{
   const posts = await getPosts();
   return { props: { posts } };
 };
+//posts: IPostCardProps[];

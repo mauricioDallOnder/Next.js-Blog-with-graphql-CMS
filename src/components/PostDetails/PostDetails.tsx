@@ -1,12 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 //build again
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import moment from "moment";
 import { IChild, IContentType, PostDetailProps } from "@/interfaces/interfaces";
 import Image from "next/legacy/image";
 import Calendar from "@/svg/calendar";
+export default function PostDetail({post}:PostDetailProps){
 
-const PostDetail: React.FC<PostDetailProps> = ({ post }) => {
 
   const getContentFragment = (index: number, children: IChild[], typeObj?: IContentType) => {
     return children.map((child, childIndex) => {
@@ -72,4 +72,3 @@ const PostDetail: React.FC<PostDetailProps> = ({ post }) => {
 };
 
 
-export default PostDetail;

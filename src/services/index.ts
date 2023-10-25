@@ -18,7 +18,7 @@ const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT!;
 export const getPosts = async (): Promise<IPostCardProps[]> => {
   const query = gql`
     query MyQuery {
-      postsConnection {
+      postsConnection(first: 70){
         edges {
           cursor
           node {

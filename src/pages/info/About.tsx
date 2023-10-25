@@ -1,11 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-unescaped-entities */
-import React from "react";
-import { NextSeo } from "next-seo";
-import Image from "next/legacy/image";
-import { Header } from "@/components";
 
-const About = () => {
+import { NextSeo } from "next-seo";
+import Image from "next/image";
+
+
+export default function About () {
   return (
     <>
       <NextSeo
@@ -84,4 +84,4 @@ const About = () => {
   );
 };
 
-export default About;
+

@@ -1,9 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from "react";
-import { NextSeo } from "next-seo";
-import { Header } from "@/components";
 
-const TermsOfUse = () => {
+import { NextSeo } from "next-seo";
+
+export default function TermsOfUse () {
   return (
     <>
       <NextSeo
@@ -202,4 +201,4 @@ const TermsOfUse = () => {
   );
 };
 
-export default TermsOfUse;
+

@@ -15,7 +15,7 @@ import { ReactNode } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import logoweb from "../assets/logosemfundo.png";
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 const SocialButton = ({
   children,

@@ -1,4 +1,4 @@
-import { IPostDetailsResponse } from '@/interfaces/interfaces';
+
 import { GraphQLClient } from 'graphql-request';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
