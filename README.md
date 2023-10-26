@@ -21,23 +21,17 @@ This is a blog built with Next.js and TypeScript, using Graphql and hygraph as i
 
 1. Clone this repository:
 
-<code>
-git clone https://github.com/mauricioDallOnder/Next.js-Blog-with-Firebase-Firestore.git
-</code>
+<code>git clone https://github.com/mauricioDallOnder/Next.js-Blog-with-Firebase-Firestore.git</code>
 
 2. Install the dependencies:
+   
+<code>npm install</code>
 
-<code>
-npm install
-</code>
+4. Set up your environment variables with Firebase credentials.
 
-3. Set up your environment variables with Firebase credentials.
+5. Run the project:
 
-4. Run the project:
-
-<code>
-npm run dev
-</code>
+<code>npm run dev</code>
 
 Now, the blog should be running locally at <code>http://localhost:3000</code>
 
