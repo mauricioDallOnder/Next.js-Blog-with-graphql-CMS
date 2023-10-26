@@ -1,6 +1,6 @@
-# Next.js Blog with Firebase Firestore
+# Next.js Blog with graphql and CMS
 
-This is a blog built with Next.js and TypeScript, using Firebase Firestore as its database. It boasts several key features essential for a modern blog.
+This is a blog built with Next.js and TypeScript, using Graphql and hygraph as its CMS. It boasts several key features essential for a modern blog.
 
 ## Features
 
@@ -14,7 +14,8 @@ This is a blog built with Next.js and TypeScript, using Firebase Firestore as it
 
 - [Next.js](https://nextjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [Firebase Firestore](https://firebase.google.com/products/firestore)
+- [Graphql](https://graphql.org/)
+- [CMS](https://app.hygraph.com/)
 
 ## Installation and Running
 
