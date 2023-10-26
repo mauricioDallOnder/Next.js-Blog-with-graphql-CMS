@@ -20,7 +20,6 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "axios": "^1.5.1",
     "client-only": "^0.0.1",
-    "flowbite": "^1.8.1",
     "graphql": "^16.8.1",
     "graphql-request": "^6.1.0",
     "html-react-parser": "^4.2.2",
