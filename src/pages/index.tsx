@@ -11,6 +11,7 @@ import FeaturedPosts from "@/components/Sections/FeaturedPosts";
 const POSTS_PER_PAGE = 3;
 export default function Home({
   posts,
+  featuredPosts
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -42,7 +43,7 @@ export default function Home({
         <meta property="og:url" content="https://cha-com-sabor.vercel.app" />
       </Head>
       <main className="container mx-auto px-10 mb-8">
-        <FeaturedPosts />
+        <FeaturedPosts featuredPosts={featuredPosts} />
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-8 col-span-1">
             {paginatedPosts.map((post, index) => (
