@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 export const config = {amp: true}
 
-export default function FeaturedPostCard({ title, featuredImage, author, createdAt, slug }: IFeaturedPost) {
+function FeaturedPostCard({ title, featuredImage, author, createdAt, slug }: IFeaturedPost) {
   const isAmp = useAmp();
 
   return (
@@ -65,3 +65,4 @@ export default function FeaturedPostCard({ title, featuredImage, author, created
     </Link>
   );
 }
+export default React.memo(FeaturedPostCard);
