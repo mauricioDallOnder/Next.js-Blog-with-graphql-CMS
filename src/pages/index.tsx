@@ -1,7 +1,7 @@
 import { PostCard, PostWidget, Categories } from "../components";
 import type { InferGetStaticPropsType, GetStaticProps } from "next";
 import { getPosts, getFeaturedPosts } from "@/services";
-
+import { IFeaturedPost } from "@/interfaces/interfaces";
 import { IPostCardProps } from "@/interfaces/interfaces";
 import Head from "next/head";
 import { useState } from "react";
