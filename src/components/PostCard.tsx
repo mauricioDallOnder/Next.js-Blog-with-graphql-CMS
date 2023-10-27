@@ -71,7 +71,7 @@ const PostCard = ({
       <div className="text-center">
         <Link href={`/post/${slug}`}>
           <button
-            className="transition duration-500 ease transform hover:-translate-y-1 inline-block bg-pink-600 text-lg font-medium rounded-full text-white px-8 py-3 cursor-pointer"
+            className="custom-btn-purple bg-purple-600 text-white rounded-md px-4 py-2 cursor-pointer"
             aria-label={`Continue lendo o post "${title}"`}
           >
             saiba mais..
