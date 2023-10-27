@@ -72,9 +72,9 @@ const PostCard = ({
         <Link href={`/post/${slug}`}>
           <button
             className="custom-btn-purple bg-purple-600 text-white rounded-md px-4 py-2 cursor-pointer"
-            aria-label={`Continue lendo o post "${title}"`}
+            aria-label="Continue lendo o post"
           >
-            saiba mais..
+          Continue lendo o post
           </button>
         </Link>
       </div>
