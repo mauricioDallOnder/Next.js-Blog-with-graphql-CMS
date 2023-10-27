@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { IFeaturedPost } from '@/interfaces/interfaces';
 import moment from "moment";
 import Image from 'next/image';
-
+import { memo } from 'react';
 function FeaturedPostCard({ title, featuredImage, author, createdAt, slug }: IFeaturedPost) {
  
 
@@ -45,4 +45,4 @@ function FeaturedPostCard({ title, featuredImage, author, createdAt, slug }: IFe
     </Link>
   );
 }
-export default React.memo(FeaturedPostCard);
+export default memo(FeaturedPostCard)
