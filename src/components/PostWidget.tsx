@@ -29,7 +29,7 @@ export default function PostWidget({ categories, slug }: PostWidgetProps) {
         <article key={index} className="flex items-start space-x-4">
           {" "}
           {/* Aqui foi alterado de items-center para items-start */}
-          <div className="w-auto h-auto flex-shrink-0">
+          <div className=" h-auto flex-shrink-0">
             <Image
               alt={`Imagem de destaque do post "${post.title}"`}
               width={100}
