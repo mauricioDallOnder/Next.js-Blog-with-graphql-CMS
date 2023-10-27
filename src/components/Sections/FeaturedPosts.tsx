@@ -1,11 +1,8 @@
-import { getFeaturedPosts } from '@/services';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import FeaturedPostCard from './FeaturedPostCard';
 import { IFeaturedPost } from '@/interfaces/interfaces';
-
-
 
 const responsive = {
   superLargeDesktop: {
@@ -27,15 +24,6 @@ const responsive = {
 };
 
 const FeaturedPosts = ({ featuredPosts }: { featuredPosts: IFeaturedPost[] }) => {
-  const [featuredPosts, setFeaturedPosts] = useState<IFeaturedPost[]>([]);
-  const [dataLoaded, setDataLoaded] = useState(false);
-
-  useEffect(() => {
-    getFeaturedPosts().then((result) => {
-      setFeaturedPosts(result);
-      setDataLoaded(true);
-    });
-  }, []);
   const customLeftArrow = (
     <div className="absolute arrow-btn left-0 text-center py-3 cursor-pointer bg-pink-600 rounded-full">
       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 text-white w-full" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -55,14 +43,19 @@ const FeaturedPosts = ({ featuredPosts }: { featuredPosts: IFeaturedPost[] }) =>
   return (
     <div className="mb-8">
       <Carousel infinite customLeftArrow={customLeftArrow} customRightArrow={customRightArrow} responsive={responsive} itemClass="px-4">
-        {dataLoaded && featuredPosts.map((post, index) => (
-          <FeaturedPostCard key={index} title={post.title} featuredImage={post.featuredImage} author={post.author} createdAt={post.createdAt} slug={post.slug}  />
+        {featuredPosts.map((post, index) => (
+          <FeaturedPostCard 
+            key={index} 
+            title={post.title} 
+            featuredImage={post.featuredImage} 
+            author={post.author} 
+            createdAt={post.createdAt} 
+            slug={post.slug} 
+          />
         ))}
       </Carousel>
     </div>
   );
- 
-
 };
 
 export default FeaturedPosts;
