@@ -4,7 +4,7 @@ import { IFeaturedPost } from '@/interfaces/interfaces';
 import moment from "moment";
 import { useAmp } from 'next/amp'
 import Image from 'next/image';
-export const config = {amp: 'hybrid'}
+export const config = {amp: true}
 export default function FeaturedPostCard({ title, featuredImage, author, createdAt, slug }: IFeaturedPost) {
   const isAmp = useAmp()
   return (
