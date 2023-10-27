@@ -1,30 +1,26 @@
 import { PostCard, PostWidget, Categories } from "../components";
 import type { InferGetStaticPropsType, GetStaticProps } from "next";
 import { getPosts } from "@/services";
-import FeaturedPostCarousel from "@/components/FeaturedPostCard";
+
 import { IPostCardProps } from "@/interfaces/interfaces";
 import Head from "next/head";
 import { useState } from "react";
-import ReactPaginate from 'react-paginate';
-const POSTS_PER_PAGE = 5;
+
+import FeaturedPosts from "@/components/Sections/FeaturedPosts";
+import RightArrow from "@/svg/RightArrow";
+import LeftArrow from "@/svg/LeftArrow";
+const POSTS_PER_PAGE = 3;
 export default function Home({
   posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [currentPage, setCurrentPage] = useState(1);
 
-  const pageCount = Math.ceil(posts.length / POSTS_PER_PAGE);
+  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
 
   const paginatedPosts = posts.slice(
     (currentPage - 1) * POSTS_PER_PAGE,
     currentPage * POSTS_PER_PAGE
   );
-
-  // Handler para mudar a página
-  // Handler para mudar a página
-const handlePageClick = (data: { selected: number }) => {
-  setCurrentPage(data.selected + 1);
-};
-
 
   return (
     <>
@@ -47,7 +43,7 @@ const handlePageClick = (data: { selected: number }) => {
         <meta property="og:url" content="https://cha-com-sabor.vercel.app" />
       </Head>
       <main className="container mx-auto px-10 mb-8">
-        <FeaturedPostCarousel posts={posts} />
+        <FeaturedPosts />
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-8 col-span-1">
             {paginatedPosts.map((post, index) => (
@@ -64,29 +60,57 @@ const handlePageClick = (data: { selected: number }) => {
 
         {/* Controles de paginação */}
 
-        <section className="flex justify-center items-center mt-8">
-        <ReactPaginate
-        
-         nextLabel="próximo>"
-         onPageChange={handlePageClick}
-         pageRangeDisplayed={3}
-         marginPagesDisplayed={2}
-         pageCount={pageCount}
-         previousLabel="<anterior"
-         pageClassName="page-item"
-         pageLinkClassName="page-link"
-         previousClassName="page-item"
-         previousLinkClassName="page-link"
-         nextClassName="page-item"
-         nextLinkClassName="page-link"
-         breakLabel="..."
-         breakClassName="page-item"
-         breakLinkClassName="page-link"
-         containerClassName="pagination"
-         activeClassName="active"
-         renderOnZeroPageCount={null}
-        />
-      </section>
+        <section className="flex justify-center items-center mt-8 space-x-4">
+          <button
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+            className={`text-center py-3 cursor-pointer px-3 bg-pink-600 rounded-full  arrow-btn
+            ${currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""}`}
+            aria-label="página anterior"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6  text-white w-full"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+              />
+            </svg>
+          </button>
+          <span className="text-lg font-semibold text-white">
+            página {currentPage} de {totalPages}
+          </span>
+          <button
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+            }
+            disabled={currentPage === totalPages}
+            className={`text-center py-3 px-3 cursor-pointer bg-pink-600 rounded-full 
+      ${currentPage === totalPages ? "opacity-50 cursor-not-allowed" : ""}`}
+            aria-label="próxima pagina"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6  text-white w-full"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              />
+            </svg>
+          </button>
+        </section>
       </main>
     </>
   );
@@ -98,4 +122,3 @@ export const getStaticProps: GetStaticProps<{
   const posts = await getPosts();
   return { props: { posts } };
 };
-//posts: IPostCardProps[];

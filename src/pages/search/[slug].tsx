@@ -1,8 +1,8 @@
 import { PostCard, PostWidget, Categories } from "@/components";
 import { IPostCardProps } from "@/interfaces/interfaces";
 import { getPosts } from "@/services";
-import { faFolderOpen } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+
 import { GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
 import Head from 'next/head';
@@ -35,9 +35,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ posts, searchTerm }) => {
         <div className="bg-[#3399cc] h-[5px]"></div>
         <header className="py-8 px-8 border-b border-gray-200">
           <div className="flex items-center">
-            <div className="text-4xl text-gray-700 mr-4" aria-hidden="true">
-              <FontAwesomeIcon icon={faFolderOpen} />
-            </div>
+            
             <h1 className="text-4xl leading-snug text-gray-800 font-semibold">
               Resultados para a busca: {searchTerm}
             </h1>

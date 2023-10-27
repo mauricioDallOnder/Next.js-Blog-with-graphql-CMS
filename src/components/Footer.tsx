@@ -8,14 +8,15 @@ import {
   useColorModeValue,
   VisuallyHidden,
 } from "@chakra-ui/react";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faFacebook } from "@fortawesome/free-brands-svg-icons";
-import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
+
 import { ReactNode } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import Link from "next/link";
 import logoweb from "../assets/logosemfundo.png";
 import Image from "next/image";
+import Facebook from "@/svg/facebook";
+import Linkedin from "@/svg/linkedin";
+import Github from "@/svg/github";
 
 const SocialButton = ({
   children,
@@ -147,7 +148,7 @@ export default function Footer() {
                 label={"Facebook"}
                 href={"https://www.facebook.com/mauricio.dallonder"}
               >
-                <FontAwesomeIcon icon={faFacebook} size="2xl" />
+                <Facebook />
               </SocialButton>
               <SocialButton
                 label={"Linkedin"}
@@ -155,13 +156,13 @@ export default function Footer() {
                   "https://www.linkedin.com/in/mauricio-dall-onder-40876a25b/"
                 }
               >
-                <FontAwesomeIcon icon={faLinkedin} size="2xl" />
+                <Linkedin />
               </SocialButton>
               <SocialButton
                 label={"GitHub"}
                 href={"https://github.com/mauricioDallOnder"}
               >
-                <FontAwesomeIcon icon={faGithub} size="2xl" />
+                <Github/>
               </SocialButton>
             </Stack>
           </Container>

@@ -3,14 +3,8 @@ import { ChangeEvent, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { getCategories } from "../services";
 import { useRouter } from "next/router";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBars,
-  faCircleChevronDown,
-  faTimes,
-} from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
-import { faSearch } from "@fortawesome/free-solid-svg-icons"; // Importe o ícone de fechar
+import { CloseIcon,HamburgerIcon,TriangleDownIcon,Search2Icon } from '@chakra-ui/icons'
 export default function Header(){
 
   const [categories, setCategories] = useState<
@@ -70,46 +64,41 @@ export default function Header(){
 
   return (
     <header className="container mx-auto px-4 md:px-10 mb-8">
-      <nav
-        className="border-b w-full  border-blue-400 py-3 bg-gradient-to-rb from-6d327c via-485DA6 to-32b37b"
-        aria-label="Main navigation"
-      >
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <Link href="/" passHref>
-            <div className="flex items-center">
-              <Image
-                src={
-                  "https://firebasestorage.googleapis.com/v0/b/geradorimagens-27342.appspot.com/o/blog-cha%2FScreenshot_2023-10-15_at_16.18.14-removebg-preview.png?alt=media&token=e8f69fdf-c6f1-4788-bd37-68603b35673e&_gl=1*1cwpgw7*_ga*MTA2NDY5MTI4MS4xNjk3MzkyMDc0*_ga_CW55HF8NVT*MTY5NzM5NzMzMS4yLjEuMTY5NzM5Nzg2Ni40NS4wLjA."
-                }
-                alt="Logotipo chacomsabor"
-                width={200}
-                height={241}
-              />
-            </div>
-          </Link>
-
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            type="button"
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden  focus:outline-none "
-            aria-label="Open main menu"
-          >
-            <FontAwesomeIcon
-              size="3x"
-              icon={menuOpen ? faTimes : faBars}
-              style={{ color: "red" }}
+    <nav
+      className="border-b w-full border-blue-400 py-3 bg-gradient-to-rb from-6d327c via-485DA6 to-32b37b"
+      aria-label="Main navigation"
+    >
+      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <Link href="/" passHref>
+          <div className="flex items-center cursor-pointer">
+            <Image
+              src={
+                "https://firebasestorage.googleapis.com/v0/b/geradorimagens-27342.appspot.com/o/blog-cha%2FScreenshot_2023-10-15_at_16.18.14-removebg-preview.png?alt=media&token=e8f69fdf-c6f1-4788-bd37-68603b35673e&_gl=1*1cwpgw7*_ga*MTA2NDY5MTI4MS4xNjk3MzkyMDc0*_ga_CW55HF8NVT*MTY5NzM5NzMzMS4yLjEuMTY5NzM5Nzg2Ni40NS4wLjA."
+              }
+              alt="Logotipo chacomsabor"
+              width={200}
+              height={241}
             />
-          </button>
+          </div>
+        </Link>
 
-          <div
-            ref={dropdownRef}
-            className={`${
-              menuOpen ? "block" : "hidden"
-            } w-full md:block md:w-auto md:pt-0 md:mt-0`}
-            id="navbar-dropdown"
-            aria-label="Menu de navegação principal"
-          >
-            <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          type="button"
+          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden focus:outline-none "
+          aria-label="Open main menu"
+        >
+          {menuOpen ? <HamburgerIcon /> : <CloseIcon />}
+        </button>
+
+        <div
+          className={`${
+            menuOpen ? "block" : "hidden"
+          } w-full md:block md:w-auto md:pt-0 md:mt-0`}
+          id="navbar-dropdown"
+          aria-label="Menu de navegação principal"
+        >
+           <ul className="flex flex-col items-center font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 ">
               <li>
                 <Link href="/" passHref>
                   <span className="block py-2 pl-3 pr-4 text-white font-bold bg-transparent md:hover:text-red  hover:underline md:p-0">
@@ -126,10 +115,7 @@ export default function Header(){
                   aria-expanded={dropdownOpen}
                 >
                   Artigos
-                  <FontAwesomeIcon
-                    icon={faCircleChevronDown}
-                    style={{ paddingLeft: "2px" }}
-                  />
+                  <TriangleDownIcon />
                 </button>
                 <div
                   className={`${
@@ -166,56 +152,52 @@ export default function Header(){
                   </span>
                 </Link>
               </li>
-              <li>
-                <div className="flex flex-col md:flex-row justify-start gap-2 items-start md:items-center">
-                  {isInputVisible ? (
-                    <>
-                      <input
-                        className="pl-2 bg-input-backgroud rounded-lg w-full md:w-88 text-base font-medium text-text-dark focus:border-yellow focus:outline-none"
-                        placeholder="Digite algo para pesquisar..."
-                        value={inputValue}
-                        onChange={handleChange}
-                        aria-label="Search"
-                      />
+              <li className="flex items-center">
+              <div className="flex flex-col md:flex-row justify-start gap-2 items-center">
+                {isInputVisible ? (
+                  <div className="flex items-center align-middle gap-2">
+                    <input
+                      className="pl-2 bg-white border border-gray-300 w-full md:w-88 text-lg font-medium text-black focus:border-yellow-500 focus:outline-none rounded-md py-2"
+                      placeholder="pesquisar..."
+                      value={inputValue}
+                      onChange={handleChange}
+                      aria-label="Search"
+                    />
+                    <div className="flex mt-2 gap-2">
                       <button
                         onClick={handleSearch}
-                        className="flex items-center py-2 pl-3 pr-4 text-white font-bold bg-transparent md:hover:text-red hover:underline md:p-0 mt-2 md:mt-0"
+                        className="flex items-center font-semibold justify-center py-2 px-4 text-white bg-green-500 hover:bg-green-600 rounded-md"
                       >
-                        <FontAwesomeIcon icon={faSearch} />
-                        <span className="ml-2 text-white">Buscar</span>
+                        <Search2Icon />
+                        <span className="ml-2">Buscar</span>
                       </button>
                       <button
                         onClick={toggleInputVisibility}
-                        className="flex items-center py-2 pl-3 pr-4 text-white font-bold bg-transparent md:hover:text-red hover:underline md:p-0 mt-2 md:mt-0"
+                        className="flex items-center py-2 px-4 text-white bg-red-500 hover:bg-red-600 rounded-md"
                       >
-                        <FontAwesomeIcon
-                          icon={faTimes}
-                          style={{ color: "red" }}
-                        />
-                        <span className="ml-2 text-white font-semibold">
-                          Fechar
-                        </span>
+                        <CloseIcon />
                       </button>
-                    </>
-                  ) : (
-                    <button
-                      onClick={toggleInputVisibility}
-                      className="flex items-center py-2 pl-3 pr-4 text-white font-bold bg-transparent md:hover:text-red hover:underline md:p-0"
-                    >
-                      <FontAwesomeIcon icon={faSearch} />
-                      <span className="ml-2 text-white font-semibold">
-                        Pesquisar
-                      </span>
-                    </button>
-                  )}
-                </div>
-              </li>
-            </ul>
-          </div>
+                    </div>
+                  </div>
+                ) : (
+                  <button
+                    onClick={toggleInputVisibility}
+                    className="flex items-center py-2 pl-3 pr-4 text-white hover:bg-gray-200 hover:text-black rounded-md p-2"
+                  >
+                    <Search2Icon />
+                    <span className="ml-2 font-semibold">Pesquisar</span>
+                  </button>
+                )}
+              </div>
+            </li>
+          </ul>
         </div>
-      </nav>
-    </header>
+      </div>
+    </nav>
+  </header>
   );
+  
+
 };
 
 

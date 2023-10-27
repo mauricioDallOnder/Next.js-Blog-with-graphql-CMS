@@ -161,3 +161,15 @@ export interface AdjacentPostsProps {
   createdAt: string; // ou Date, dependendo de como você está lidando com datas
   slug: string;
 }
+
+
+export interface IFeaturedPost {
+  title: string;
+  featuredImage: FeaturedImage;
+  author: Author;
+  createdAt: string;
+  slug: string;
+}
+export interface IFeaturedPostsResponse {
+  posts: IFeaturedPost[];
+}

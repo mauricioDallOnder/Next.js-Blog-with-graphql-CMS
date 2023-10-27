@@ -11,8 +11,8 @@ const PostCard = ({ title, excerpt, featuredImage, slug, createdAt, author }: IP
           src={featuredImage.url}
           alt={`Imagem de destaque do post "${title}"`}
           layout="fill"
-          objectFit='cover'
-          className="shadow-lg rounded-t-lg lg:rounded-lg"
+          unoptimized
+          className="object-top absolute h-80 w-full object-cover  shadow-lg rounded-t-lg lg:rounded-lg"
           priority={false}
           quality={70}
           sizes="(min-width: 1540px) 1456px, (min-width: 1300px) 1200px, (min-width: 1160px) 944px, (min-width: 800px) 688px, (min-width: 660px) 560px, (min-width: 440px) 360px, 220px"

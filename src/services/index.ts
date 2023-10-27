@@ -11,6 +11,8 @@ import {
   GetPostWithCommentsResponse,
   IAdjacentPostsResponse,
   IPost,
+  IFeaturedPost,
+  IFeaturedPostsResponse,
 } from "@/interfaces/interfaces";
 
 import { request, gql } from "graphql-request";
@@ -290,6 +292,31 @@ export const getPostsByCategory = async (categorySlug: string): Promise<IPostCar
   if (!result.posts || result.posts.length === 0) {
     return []; // Return an empty array in case of error or empty response
   }
+
+  return result.posts;
+};
+
+export const getFeaturedPosts = async (): Promise<IFeaturedPost[]> => {
+  const query = gql`
+    query GetCategoryPost {
+      posts(where: {featuredPost: true}) {
+        author {
+          name
+          photo {
+            url
+          }
+        }
+        featuredImage {
+          url
+        }
+        title
+        slug
+        createdAt
+      }
+    }
+  `;
+
+  const result = await request<IFeaturedPostsResponse>(graphqlAPI, query);
 
   return result.posts;
 };
