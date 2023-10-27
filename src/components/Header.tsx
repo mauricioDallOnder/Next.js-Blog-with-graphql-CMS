@@ -173,7 +173,7 @@ export default function Header(){
                       </button>
                       <button
                         onClick={toggleInputVisibility}
-                        className="flex items-center py-2 px-4 text-white bg-red-500 hover:bg-red-600 rounded-md"
+                        className="custom-btn-red bg-red-600 text-white rounded-md px-4 py-2 cursor-pointer"
                       >
                         <CloseIcon />
                       </button>
