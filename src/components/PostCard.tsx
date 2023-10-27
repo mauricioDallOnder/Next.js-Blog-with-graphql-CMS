@@ -21,7 +21,8 @@ const PostCard = ({
           objectFit="cover"
           objectPosition="top"
           className="rounded-t-lg lg:rounded-lg shadow-lg"
-          quality={70}
+          priority={true}
+          placeholder="blur"
           sizes="(min-width: 1540px) 1456px, (min-width: 1300px) 1200px, (min-width: 1160px) 944px, (min-width: 800px) 688px, (min-width: 660px) 560px, (min-width: 440px) 360px, 220px"
         />
       </figure>
