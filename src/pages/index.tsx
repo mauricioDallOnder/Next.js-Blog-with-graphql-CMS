@@ -1,6 +1,6 @@
 import { PostCard, PostWidget, Categories } from "../components";
 import type { InferGetStaticPropsType, GetStaticProps } from "next";
-import { getPosts } from "@/services";
+import { getPosts, getFeaturedPosts } from "@/services";
 
 import { IPostCardProps } from "@/interfaces/interfaces";
 import Head from "next/head";
@@ -117,7 +117,9 @@ export default function Home({
 
 export const getStaticProps: GetStaticProps<{
   posts: IPostCardProps[];
+  featuredPosts: IFeaturedPost[];  // <-- Adicione esta linha
 }> = async () => {
   const posts = await getPosts();
-  return { props: { posts } };
+  const featuredPosts = await getFeaturedPosts();  // <-- Adicione esta linha
+  return { props: { posts, featuredPosts } };  // <-- Passe featuredPosts como prop também
 };
