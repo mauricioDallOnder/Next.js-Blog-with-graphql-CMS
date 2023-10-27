@@ -44,7 +44,7 @@ export default function CookieConsentBanner () {
           location="bottom"
           buttonText="Permitir Cookies"
           enableDeclineButton
-          declineButtonText="Rejeitar todos"
+          declineButtonText="Rejeitar Cookies"
           cookieName="myCookieConsent"
           style={{
             display: "flex",
