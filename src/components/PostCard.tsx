@@ -3,7 +3,7 @@ import moment from "moment";
 import Link from "next/link";
 import Image from "next/legacy/image";
 import { useAmp } from "next/amp";
-export const config = { amp: "hybrid" };
+export const config = { amp: true };
 const PostCard = ({
   title,
   excerpt,
