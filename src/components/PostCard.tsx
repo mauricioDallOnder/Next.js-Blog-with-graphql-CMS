@@ -15,15 +15,17 @@ const PostCard = ({
   const [imageLoaded, setImageLoaded] = useState(false);
   return (
     <article className="bg-white shadow-[rgb(42,42,42)_0px_9px_40px] rounded-lg p-0 lg:p-8 pb-12 mb-8">
-      <figure className="relative overflow-hidden shadow-md pb-80 mb-6 h-80">
+      <figure className="relative overflow-hidden shadow-md  mb-6 h-auto ">
         {!imageLoaded && (
           <div className="skeleton absolute top-0 left-0 w-full h-full"></div>
         )}
         <Image
           src={featuredImage.url}
           alt={`Imagem de destaque do post "${title}"`}
-          layout="fill"
-          
+          width={1536}
+          height={864}
+          objectFit="contain"
+          objectPosition="top"
           className="rounded-t-lg lg:rounded-lg shadow-lg"
           priority={true}
           onLoad={() => setImageLoaded(true)}
