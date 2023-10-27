@@ -1,9 +1,8 @@
 import { IPostCardProps } from "@/interfaces/interfaces";
 import moment from "moment";
 import Link from "next/link";
-import Image from "next/legacy/image";
-import { useAmp } from "next/amp";
-export const config = { amp: true };
+import Image from "next/image";
+
 const PostCard = ({
   title,
   excerpt,
@@ -12,39 +11,19 @@ const PostCard = ({
   createdAt,
   author,
 }: IPostCardProps) => {
-  const isAmp = useAmp();
   return (
     <article className="bg-white shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8">
-      <figure className="relative overflow-hidden shadow-md pb-80 mb-6">
-        {isAmp ? (
-          <amp-img
-            layout="responsive"
-            width="100%"
-            height="20rem"
-            style={{
-              objectFit: "cover",
-              objectPosition: "top",
-              position: "absolute",
-              borderTopLeftRadius: "0.5rem",
-              borderTopRightRadius: "0.5rem",
-              boxShadow:
-                "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-            }}
-            src={featuredImage.url}
-            alt={`Imagem de destaque do post "${title}"`}
-          />
-        ) : (
-          <Image
-            src={featuredImage.url}
-            alt={`Imagem de destaque do post "${title}"`}
-            layout="fill"
-            unoptimized
-            className="object-top absolute h-80 w-full object-cover  shadow-lg rounded-t-lg lg:rounded-lg"
-            priority={false}
-            quality={70}
-            sizes="(min-width: 1540px) 1456px, (min-width: 1300px) 1200px, (min-width: 1160px) 944px, (min-width: 800px) 688px, (min-width: 660px) 560px, (min-width: 440px) 360px, 220px"
-          />
-        )}
+      <figure className="relative overflow-hidden shadow-md pb-80 mb-6 h-80">
+        <Image
+          src={featuredImage.url}
+          alt={`Imagem de destaque do post "${title}"`}
+          layout="fill"
+          objectFit="cover"
+          objectPosition="top"
+          className="rounded-t-lg lg:rounded-lg shadow-lg"
+          quality={70}
+          sizes="(min-width: 1540px) 1456px, (min-width: 1300px) 1200px, (min-width: 1160px) 944px, (min-width: 800px) 688px, (min-width: 660px) 560px, (min-width: 440px) 360px, 220px"
+        />
       </figure>
       <h1 className="transition duration-700 text-center mb-8 cursor-pointer hover:text-pink-600 text-3xl font-semibold">
         <Link href={`/post/${slug}`} aria-label={`Leia o post "${title}"`}>
