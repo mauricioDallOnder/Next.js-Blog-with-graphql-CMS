@@ -13,23 +13,24 @@ const PostCard = ({
   author,
 }: IPostCardProps) => {
   const [imageLoaded, setImageLoaded] = useState(false);
+
   return (
-    <article className="bg-white shadow-[rgb(42,42,42)_0px_9px_40px] rounded-lg p-0 lg:p-8 pb-12 mb-8">
-      <figure className="relative overflow-hidden shadow-md  mb-6 h-auto ">
+    <article className="bg-white shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8">
+      <figure className="relative overflow-hidden shadow-md mb-6 h-auto">
         {!imageLoaded && (
           <div className="skeleton absolute top-0 left-0 w-full h-full"></div>
         )}
         <Image
           src={featuredImage.url}
           alt={`Imagem de destaque do post "${title}"`}
+          layout="responsive"
           width={1536}
           height={864}
-          objectFit="contain"
-          objectPosition="top"
+          objectFit="cover"
+          objectPosition="center"
           className="rounded-t-lg lg:rounded-lg shadow-lg"
           priority={true}
           onLoad={() => setImageLoaded(true)}
-          sizes="(min-width: 1540px) 1456px, (min-width: 1300px) 1200px, (min-width: 1160px) 944px, (min-width: 800px) 688px, (min-width: 660px) 560px, (min-width: 440px) 360px, 220px"
         />
       </figure>
       <h1 className="transition duration-700 text-center mb-8 cursor-pointer hover:text-pink-600 text-3xl font-semibold">
@@ -38,21 +39,20 @@ const PostCard = ({
         </Link>
       </h1>
       <div className="block lg:flex text-center items-center justify-center mb-8 w-full">
-        <div className="flex justify-center mb-4 lg:mb-0 w-full lg:w-auto mr-8 items-center">
+        <Link href="/info/About" className="flex justify-center mb-4 lg:mb-0 w-full lg:w-auto mr-8 items-center group">
           <Image
-            unoptimized
             alt={`Foto do autor ${author.name}`}
-            height={30}
-            width={30}
-            className="align-middle rounded-full"
+            width={40}
+            height={40}
+            className="rounded-full shadow-lg group-hover:shadow-xl transition-shadow duration-300"
             src={author.photo.url}
           />
-          <h2 className="inline align-middle text-gray-700 ml-2 font-medium text-lg">
+          <h2 className="ml-2 text-gray-700 font-medium text-lg group-hover:text-pink-600 transition-colors duration-300">
             {author.name}
           </h2>
-        </div>
+        </Link>
         <div className="font-medium text-gray-700">
-          <svg
+        <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 inline mr-2 text-pink-500"
             fill="none"
@@ -77,7 +77,7 @@ const PostCard = ({
       <div className="text-center">
         <Link href={`/post/${slug}`}>
           <button
-            className="custom-btn-purple bg-purple-600 text-white rounded-md px-4 py-2 cursor-pointer"
+            className="bg-purple-600 text-white rounded-md px-4 py-2 cursor-pointer hover:bg-purple-700 transition-colors duration-300"
             aria-label="Leia o artigo completo..."
           >
             Leia o artigo completo...
