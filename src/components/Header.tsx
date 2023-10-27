@@ -182,7 +182,7 @@ export default function Header(){
                 ) : (
                   <button
                     onClick={toggleInputVisibility}
-                    className="flex items-center py-2 pl-3 pr-4 text-white hover:bg-gray-200 hover:text-black rounded-md p-2"
+                    className="custom-btn-blue bg-blue-600 text-white rounded-md px-4 py-2 cursor-pointer"
                   >
                     <Search2Icon />
                     <span className="ml-2 font-semibold">Pesquisar</span>
