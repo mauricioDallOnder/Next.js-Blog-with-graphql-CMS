@@ -29,13 +29,15 @@ export default function PostWidget({ categories, slug }: PostWidgetProps) {
         <article key={index} className="flex items-start space-x-4">
           {" "}
           {/* Aqui foi alterado de items-center para items-start */}
-          <div className="w-16 h-16 flex-shrink-0">
+          <div className="w-auto h-auto flex-shrink-0">
             <Image
               alt={`Imagem de destaque do post "${post.title}"`}
-              height={64}
-              width={64}
+              width={100}
+              height={100}
+              objectFit="contain"
+              objectPosition="top"
               unoptimized
-              className="object-cover rounded-md"
+              className="rounded-t-lg lg:rounded-lg shadow-lg"
               src={post.featuredImage.url}
             />
           </div>
