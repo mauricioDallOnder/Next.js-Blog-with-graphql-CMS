@@ -2,6 +2,7 @@ import { IPostCardProps } from "@/interfaces/interfaces";
 import moment from "moment";
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 
 const PostCard = ({
   title,
@@ -11,18 +12,21 @@ const PostCard = ({
   createdAt,
   author,
 }: IPostCardProps) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
   return (
     <article className="bg-white shadow-[rgb(42,42,42)_0px_9px_40px] rounded-lg p-0 lg:p-8 pb-12 mb-8">
       <figure className="relative overflow-hidden shadow-md pb-80 mb-6 h-80">
+        {!imageLoaded && (
+          <div className="skeleton absolute top-0 left-0 w-full h-full"></div>
+        )}
         <Image
           src={featuredImage.url}
           alt={`Imagem de destaque do post "${title}"`}
           layout="fill"
-          objectFit="cover"
-          objectPosition="top"
+          
           className="rounded-t-lg lg:rounded-lg shadow-lg"
           priority={true}
-          placeholder="blur"
+          onLoad={() => setImageLoaded(true)}
           sizes="(min-width: 1540px) 1456px, (min-width: 1300px) 1200px, (min-width: 1160px) 944px, (min-width: 800px) 688px, (min-width: 660px) 560px, (min-width: 440px) 360px, 220px"
         />
       </figure>
@@ -74,7 +78,7 @@ const PostCard = ({
             className="custom-btn-purple bg-purple-600 text-white rounded-md px-4 py-2 cursor-pointer"
             aria-label="Leia o artigo completo..."
           >
-         Leia o artigo completo...
+            Leia o artigo completo...
           </button>
         </Link>
       </div>

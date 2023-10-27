@@ -64,13 +64,13 @@ export default function Home({
           <button
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
-            className={`text-center py-3 cursor-pointer px-3 bg-pink-600 rounded-full  arrow-btn
+            className={`ext-center custom-btn-purple rounded-full bg-[#9c27b0] w-16 py-2 cursor-pointer px-2
             ${currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""}`}
             aria-label="página anterior"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6  text-white w-full"
+              className="h-6  text-white w-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -91,13 +91,13 @@ export default function Home({
               setCurrentPage((prev) => Math.min(prev + 1, totalPages))
             }
             disabled={currentPage === totalPages}
-            className={`text-center py-3 px-3 cursor-pointer bg-pink-600 rounded-full 
+            className={`text-center custom-btn-purple rounded-full bg-[#9c27b0] w-16 py-2 cursor-pointer px-2
       ${currentPage === totalPages ? "opacity-50 cursor-not-allowed" : ""}`}
             aria-label="próxima pagina"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6  text-white w-full"
+              className="h-6  text-white w-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -118,9 +118,9 @@ export default function Home({
 
 export const getStaticProps: GetStaticProps<{
   posts: IPostCardProps[];
-  featuredPosts: IFeaturedPost[];  // <-- Adicione esta linha
+  featuredPosts: IFeaturedPost[];  
 }> = async () => {
   const posts = await getPosts();
-  const featuredPosts = await getFeaturedPosts();  // <-- Adicione esta linha
-  return { props: { posts, featuredPosts } };  // <-- Passe featuredPosts como prop também
+  const featuredPosts = await getFeaturedPosts();  
+  return { props: { posts, featuredPosts } };  // <-- Passando featuredPosts como prop também
 };

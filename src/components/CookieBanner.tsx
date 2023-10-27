@@ -57,24 +57,26 @@ export default function CookieConsentBanner () {
             justifyContent: "space-between",
             alignItems: "center",
             padding: "20px",  
-            backgroundColor: "#374151",
-            boxShadow: "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
+            backgroundColor: "rgba(0, 0, 0, 0.87)",
+            boxShadow: "0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)",
           }}
           buttonStyle={{
             margin: "0 10px", 
             padding: "10px 20px",  
             borderRadius: "0.5rem",
             color: "#ffffff",
-            backgroundColor: "#111827",
+            backgroundColor: "#2e7d32",
             whiteSpace: 'nowrap', 
+            boxShadow:'0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);'
           }}
           declineButtonStyle={{
             margin: "0 10px",  
             padding: "10px 20px",  
             borderRadius: "0.375rem",
-            borderColor: "#111827",
-            color: "#D1D5DB",
-            whiteSpace: 'nowrap', 
+            backgroundColor:'#rgb(211, 47, 47);',
+            color: "#rgb(255, 255, 255)",
+            whiteSpace: 'nowrap',
+            boxShadow:'rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;' 
           }}
           expires={150}
           onAccept={handleAcceptCookie}
@@ -84,13 +86,13 @@ export default function CookieConsentBanner () {
             <Link href="/info/CookiesPolicy">
               <p>
                 Este site armazena dados como{" "}
-                <span className="font-bold text-sky-400">Cookies</span> para
+                <span className="font-bold text-[#rgb(255, 255, 255)]">Cookies</span> para
                 permitir funcionalidades essenciais do site, bem como marketing,
                 personalização e análises.
               </p>
             </Link>
             <Link href="/info/PrivacyPolicy">
-              <p style={{ color: "#88a0b9", textDecoration: "underline" }}>  {/* estiliza o link */}
+              <p>  {/* estiliza o link */}
               Para mais informações, leia nossa Política de Privacidade.
                 <span className="font-bold text-sky-400">
                   Política de Privacidade
