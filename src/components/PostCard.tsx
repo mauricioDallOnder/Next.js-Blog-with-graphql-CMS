@@ -12,7 +12,7 @@ const PostCard = ({
   author,
 }: IPostCardProps) => {
   return (
-    <article className="bg-white shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8">
+    <article className="bg-white shadow-[rgb(42,42,42)_0px_9px_40px] rounded-lg p-0 lg:p-8 pb-12 mb-8">
       <figure className="relative overflow-hidden shadow-md pb-80 mb-6 h-80">
         <Image
           src={featuredImage.url}
