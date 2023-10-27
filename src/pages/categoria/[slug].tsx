@@ -5,9 +5,8 @@ import { Categories, PostCard, PostWidget } from "@/components";
 import CategoriesHeader from "@/components/CategoriesHeader";
 import { NextSeo } from "next-seo";
 import { useState } from "react";
-import { faBackward, faForward } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-const POSTS_PER_PAGE = 3;
+
+const POSTS_PER_PAGE = 5;
 export default function CategoryPage({
   posts,
   selectedCategory,
@@ -59,10 +58,23 @@ export default function CategoryPage({
           <button
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
-            className={`bg-blue-500 text-white py-2 px-4 rounded-lg focus:outline-none hover:bg-blue-600 transition 
+            className={`text-center py-3 px-3 cursor-pointer bg-pink-600 rounded-full 
       ${currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""}`}
           >
-            <FontAwesomeIcon icon={faBackward} />
+             <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6  text-white w-full"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+              />
+            </svg>
           </button>
           <span className="text-lg font-semibold text-white">
             página {currentPage} de {totalPages}
@@ -72,10 +84,23 @@ export default function CategoryPage({
               setCurrentPage((prev) => Math.min(prev + 1, totalPages))
             }
             disabled={currentPage === totalPages}
-            className={`bg-blue-500 text-white py-2 px-4 rounded-lg focus:outline-none hover:bg-blue-600 transition 
+            className={`text-center py-3 px-3 cursor-pointer bg-pink-600 rounded-full 
       ${currentPage === totalPages ? "opacity-50 cursor-not-allowed" : ""}`}
           >
-            <FontAwesomeIcon icon={faForward} />
+             <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6  text-white w-full"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              />
+            </svg>
           </button>
         </section>
       </main>

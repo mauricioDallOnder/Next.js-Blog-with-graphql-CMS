@@ -7,8 +7,7 @@ import Head from "next/head";
 import { useState } from "react";
 
 import FeaturedPosts from "@/components/Sections/FeaturedPosts";
-import RightArrow from "@/svg/RightArrow";
-import LeftArrow from "@/svg/LeftArrow";
+
 const POSTS_PER_PAGE = 3;
 export default function Home({
   posts,
