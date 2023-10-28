@@ -10,15 +10,29 @@ import {
   TriangleDownIcon,
   Search2Icon,
 } from "@chakra-ui/icons";
+
 export default function Header() {
   const [categories, setCategories] = useState<
     { name: string; slug: string }[]
   >([]);
+  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isInputVisible, setInputVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const router = useRouter();
+  const [buttonText, setButtonText] = useState("PESQUISAR");
+
+  async function handleSearch() {
+    setButtonText("BUSCANDO...");
+
+    await new Promise((resolve) => setTimeout(resolve, 7000));
+
+    if (inputValue.trim() !== "") {
+      router.push(`/search/${inputValue.trim()}`);
+      setInputValue("");
+    }
+    setButtonText("PESQUISAR");
+  }
 
   useEffect(() => {
     getCategories().then((newCategories) => {
@@ -59,12 +73,6 @@ export default function Header() {
   const toggleInputVisibility = () => {
     setInputVisible(!isInputVisible);
   };
-  const handleSearch = () => {
-    if (inputValue.trim() !== "") {
-      router.push(`/search/${inputValue.trim()}`);
-      setInputValue("");
-    }
-  };
 
   return (
     <header className="container mx-auto px-4 md:px-10 mb-8">
@@ -80,8 +88,8 @@ export default function Header() {
                   "https://firebasestorage.googleapis.com/v0/b/geradorimagens-27342.appspot.com/o/blog-cha%2FScreenshot_2023-10-15_at_16.18.14-removebg-preview.png?alt=media&token=e8f69fdf-c6f1-4788-bd37-68603b35673e&_gl=1*1cwpgw7*_ga*MTA2NDY5MTI4MS4xNjk3MzkyMDc0*_ga_CW55HF8NVT*MTY5NzM5NzMzMS4yLjEuMTY5NzM5Nzg2Ni40NS4wLjA."
                 }
                 alt="Logotipo chacomsabor"
-                width={200} 
-                height={70} 
+                width={200}
+                height={70}
               />
             </div>
           </Link>
@@ -92,7 +100,11 @@ export default function Header() {
             className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden focus:outline-none "
             aria-label="Open main menu"
           >
-            {menuOpen ? <HamburgerIcon style={{ fontSize: '24px', color: '#FFFFFF' }} /> : <CloseIcon style={{ fontSize: '24px', color: '#fa0000' }} />}
+            {menuOpen ? (
+              <HamburgerIcon style={{ fontSize: "24px", color: "#FFFFFF" }} />
+            ) : (
+              <CloseIcon style={{ fontSize: "24px", color: "#fa0000" }} />
+            )}
           </button>
 
           <div
@@ -119,23 +131,23 @@ export default function Header() {
                   aria-expanded={dropdownOpen}
                 >
                   Artigos
-                  <TriangleDownIcon />
+                  <TriangleDownIcon style={{ paddingLeft: "2px" }} />
                 </button>
                 <div
                   className={`${
                     dropdownOpen ? "block" : "hidden"
-                  } z-10 bg-red divide-y divide-gray-100 rounded-lg shadow w-44 absolute top-full left-0 mt-2 dark:bg-gray-700 dark:divide-gray-600 font-bold  `}
+                  } z-10 bg-red divide-y divide-gray-100 rounded-lg shadow w-44 absolute top-full left-0 mt-2 dark:bg-gray-700 dark:divide-gray-600 font-bold`}
                   id="dropdownNavbar"
                 >
                   <ul
-                    className="py-2 text-blue bg-white"
+                    className="rounded-md bg-white shadow-lg p-2 mt-2"
                     aria-labelledby="dropdownNavbarLink"
                   >
                     {categories.map((category, index) => (
                       <li
                         key={index}
                         role="none"
-                        className="hover:text-red-700"
+                        className="hover:bg-gray-200 rounded transition-colors duration-200"
                       >
                         <button
                           onClick={() => handleCategoryClick(category)}
@@ -167,17 +179,28 @@ export default function Header() {
                         onChange={handleChange}
                         aria-label="Search"
                       />
-                      <div className="flex mt-2 gap-2">
-                        <button
-                          onClick={handleSearch}
-                          className="custom-btn-blue bg-blue-600 text-white rounded-md px-4 py-2 cursor-pointer"
-                        >
-                          <Search2Icon />
-                          <span className="ml-2">Buscar</span>
-                        </button>
+                      <div className="flex mb-2 gap-2">
+                        {inputValue === "" ? (
+                         
+                          <button
+                            disabled={true}
+                            className="custom-btn-blue bg-blue-600 text-white rounded-md px-4 py-2 cursor-pointer"
+                          >
+                            PESQUISAR{" "}
+                          </button>
+                          
+                          
+                        ) : (
+                          <button
+                            className="custom-btn-blue bg-blue-600 text-white rounded-md px-4 py-2 cursor-pointer"
+                            onClick={handleSearch}
+                          >
+                            {buttonText}
+                          </button>
+                        )}
                         <button
                           onClick={toggleInputVisibility}
-                          className="custom-btn-red bg-red-600 text-white rounded-md px-4 py-2 cursor-pointer"
+                          className="custom-btn-red bg-red-600 text-white rounded-md px-4 my-4 cursor-pointer"
                         >
                           <CloseIcon />
                         </button>
