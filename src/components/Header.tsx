@@ -10,6 +10,7 @@ import {
   TriangleDownIcon,
   Search2Icon,
 } from "@chakra-ui/icons";
+import logo_avatar from '../assets/LOGO.png'
 
 export default function Header() {
   const [categories, setCategories] = useState<
@@ -85,11 +86,11 @@ export default function Header() {
             <div className="flex items-center cursor-pointer">
               <Image
                 src={
-                  "https://firebasestorage.googleapis.com/v0/b/geradorimagens-27342.appspot.com/o/blog-cha%2FScreenshot_2023-10-15_at_16.18.14-removebg-preview.png?alt=media&token=e8f69fdf-c6f1-4788-bd37-68603b35673e&_gl=1*1cwpgw7*_ga*MTA2NDY5MTI4MS4xNjk3MzkyMDc0*_ga_CW55HF8NVT*MTY5NzM5NzMzMS4yLjEuMTY5NzM5Nzg2Ni40NS4wLjA."
+                  logo_avatar
                 }
                 alt="Logotipo chacomsabor"
                 width={200}
-                height={70}
+                height={71}
               />
             </div>
           </Link>
