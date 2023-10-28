@@ -71,12 +71,12 @@ export default function About () {
           <h2
             className="text-black mt-4 mb-2 text-xl font-bold"
           >
-            MAURICIO DALL ONDER
+            MAURICIO DALL ONDER e MATHEUS FONTANA BRIDI
           </h2>
           <h3
             className="text-black mb-4 text-3xs font-semibold"
           >
-            Autor do Blog
+            Autores do Blog
           </h3>
         </article>
       </main>
