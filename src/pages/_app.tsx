@@ -2,7 +2,7 @@ import "@/styles/globals.scss";
 import type { AppProps } from "next/app";
 import Layout from "@/components/layout/Layout";
 import { DefaultSeo } from 'next-seo';
-import CookieConsentBanner from "@/components/CookieBanner";
+
 
 function App({ Component, pageProps }: AppProps) {
   return (

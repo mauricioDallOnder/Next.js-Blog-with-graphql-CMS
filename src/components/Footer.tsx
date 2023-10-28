@@ -14,10 +14,10 @@ import { ReactNode } from "react";
 import Link from "next/link";
 import logoweb from "../assets/logosemfundo.png";
 import Image from "next/image";
-import Facebook from "@/svg/facebook";
-import Linkedin from "@/svg/linkedin";
-import Github from "@/svg/github";
-
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const SocialButton = ({
   children,
   label,
@@ -148,7 +148,7 @@ export default function Footer() {
                 label={"Facebook"}
                 href={"https://www.facebook.com/mauricio.dallonder"}
               >
-                <Facebook />
+                   <FontAwesomeIcon icon={faFacebook} style={{color: "#ffff"}} />
               </SocialButton>
               <SocialButton
                 label={"Linkedin"}
@@ -156,13 +156,14 @@ export default function Footer() {
                   "https://www.linkedin.com/in/mauricio-dall-onder-40876a25b/"
                 }
               >
-                <Linkedin />
+            
+            <FontAwesomeIcon icon={faLinkedin} style={{color: "#ffff"}} />
               </SocialButton>
               <SocialButton
                 label={"GitHub"}
                 href={"https://github.com/mauricioDallOnder"}
               >
-                <Github/>
+                <FontAwesomeIcon icon={faGithub} style={{color: "#ffff"}} />
               </SocialButton>
             </Stack>
           </Container>
