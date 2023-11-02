@@ -26,7 +26,7 @@ export default function Header() {
   async function handleSearch() {
     setButtonText("BUSCANDO...");
 
-    await new Promise((resolve) => setTimeout(resolve, 9000));
+    
 
     if (inputValue.trim() !== "") {
       router.push(`/search/${inputValue.trim()}`);

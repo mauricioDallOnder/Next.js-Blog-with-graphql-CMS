@@ -1,8 +1,6 @@
 import { PostCard, PostWidget, Categories } from "@/components";
 import { IPostCardProps } from "@/interfaces/interfaces";
-import { getPosts } from "@/services";
-
-
+import { searchPostsDirectlyInDataSource } from "@/services";
 import { GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
 import Head from 'next/head';
@@ -66,16 +64,12 @@ const SearchPage: React.FC<SearchPageProps> = ({ posts, searchTerm }) => {
 export default SearchPage;
 
 export const getServerSideProps: GetServerSideProps<SearchPageProps> = async (context) => {
-  const posts = await getPosts();
   const searchTerm = context.query.slug as string;
-console.log(posts)
-  const resultsFiltered = posts.filter(
-    (post) =>
-      post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      post.author.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  
+  // Use a função searchPostsDirectlyInDataSource para buscar os posts
+  const posts = await searchPostsDirectlyInDataSource(searchTerm);
 
-  return { props: { posts: resultsFiltered, searchTerm } };
+  return { props: { posts, searchTerm } };
 };
+
 //fix responsividade

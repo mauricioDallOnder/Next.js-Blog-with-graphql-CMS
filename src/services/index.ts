@@ -321,3 +321,54 @@ export const getFeaturedPosts = async (): Promise<IFeaturedPost[]> => {
   return result.posts;
 };
 
+
+
+export const searchPostsDirectlyInDataSource = async (searchQuery: string): Promise<IPostCardProps[]> => {
+  const query = gql`
+    query SearchPosts($searchQuery: String!) {
+      postsConnection(
+        where: { OR: [{ title_contains: $searchQuery }, { excerpt_contains: $searchQuery }] }
+        first: 10
+      ) {
+        edges {
+          node {
+            author {
+              bio
+              name
+              id
+              photo {
+                url
+              }
+            }
+            createdAt
+            slug
+            title
+            excerpt
+            featuredImage {
+              url
+            }
+            categories {
+              name
+              slug
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  try {
+    const result = await request<IGraphQLResponse>(graphqlAPI, query, {
+      searchQuery,
+    });
+    
+    if (!result.postsConnection || !result.postsConnection.edges) {
+      return []; // Retorna um array vazio em caso de resposta inválida
+    }
+
+    return result.postsConnection.edges.map((edge) => edge.node);
+  } catch (error) {
+    console.error("Error fetching search results:", error);
+    return []; // Retorna um array vazio em caso de erro
+  }
+};
