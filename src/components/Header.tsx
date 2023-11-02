@@ -102,9 +102,10 @@ export default function Header() {
             aria-label="Open main menu"
           >
             {menuOpen ? (
-              <HamburgerIcon style={{ fontSize: "24px", color: "#FFFFFF" }} />
-            ) : (
               <CloseIcon style={{ fontSize: "24px", color: "#fa0000" }} />
+            ) : (
+             
+              <HamburgerIcon style={{ fontSize: "24px", color: "#FFFFFF" }} />
             )}
           </button>
 
@@ -124,7 +125,9 @@ export default function Header() {
                 </Link>
               </li>
               <li className="relative">
+              
                 <button
+                
                   onClick={() => setDropdownOpen(!dropdownOpen)}
                   id="dropdownNavbarLink"
                   className="flex items-center justify-between w-full py-2 pl-3 pr-4 text-white rounded hover:text-white md:hover:bg-transparent md:border-0 md:p-0 md:w-auto md:hover:text-red focus:outline-blue focus:text-red font-bold hover:underline"
@@ -140,6 +143,7 @@ export default function Header() {
                   } z-10 bg-red divide-y divide-gray-100 rounded-lg shadow w-44 absolute top-full left-0 mt-2 dark:bg-gray-700 dark:divide-gray-600 font-bold`}
                   id="dropdownNavbar"
                 >
+                  
                   <ul
                     className="rounded-md bg-white shadow-lg p-2 mt-2"
                     aria-labelledby="dropdownNavbarLink"

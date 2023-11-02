@@ -92,7 +92,7 @@ export default function Home({
             }
             disabled={currentPage === totalPages}
             className={`text-center custom-btn-purple rounded-full bg-[#9c27b0] w-16 py-2 cursor-pointer px-2
-      ${currentPage === totalPages ? "opacity-50 cursor-not-allowed" : ""}`}
+            ${currentPage === totalPages ? "opacity-50 cursor-not-allowed" : ""}`}
             aria-label="próxima pagina"
           >
             <svg
