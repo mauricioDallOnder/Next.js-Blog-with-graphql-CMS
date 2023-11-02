@@ -37,3 +37,4 @@ next-env.d.ts
 #robots
 /public/robots.txt
 /public/sitemap.xml
+.env
