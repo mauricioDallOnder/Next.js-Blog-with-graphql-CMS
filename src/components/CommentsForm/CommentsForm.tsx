@@ -97,3 +97,4 @@ export default function CommentsForm({ post }: PostDetailProps) {
     </section>
   );
 }
+//fix issues on submit this comment form 01/11/2023
