@@ -58,12 +58,13 @@ export default function CategoryPage({
           <button
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
-            className={`text-center py-3 px-3 cursor-pointer bg-pink-600 rounded-full 
-      ${currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""}`}
+            className={`ext-center custom-btn-purple rounded-full bg-[#9c27b0] w-16 py-2 cursor-pointer px-2
+            ${currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""}`}
+            aria-label="página anterior"
           >
-             <svg
+            <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6  text-white w-full"
+              className="h-6  text-white w-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -84,12 +85,13 @@ export default function CategoryPage({
               setCurrentPage((prev) => Math.min(prev + 1, totalPages))
             }
             disabled={currentPage === totalPages}
-            className={`text-center py-3 px-3 cursor-pointer bg-pink-600 rounded-full 
-      ${currentPage === totalPages ? "opacity-50 cursor-not-allowed" : ""}`}
+            className={`text-center custom-btn-purple rounded-full bg-[#9c27b0] w-16 py-2 cursor-pointer px-2
+            ${currentPage === totalPages ? "opacity-50 cursor-not-allowed" : ""}`}
+            aria-label="próxima pagina"
           >
-             <svg
+            <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6  text-white w-full"
+              className="h-6  text-white w-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
