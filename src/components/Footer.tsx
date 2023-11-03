@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import {
   Box,
   chakra,
@@ -14,10 +15,8 @@ import { ReactNode } from "react";
 import Link from "next/link";
 import logoweb from "../assets/logosemfundo.png";
 import Image from "next/image";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faFacebook } from "@fortawesome/free-brands-svg-icons";
-import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+
 const SocialButton = ({
   children,
   label,
@@ -121,11 +120,7 @@ export default function Footer() {
               >
                 Sobre
               </Link>
-              <Link
-                href="/sitemap"
-                role="link"
-                aria-label="Mapa do site"
-              >
+              <Link href="/sitemap" role="link" aria-label="Mapa do site">
                 Mapa do Site
               </Link>
             </Stack>
@@ -155,7 +150,12 @@ export default function Footer() {
                 label={"Facebook"}
                 href={"https://www.facebook.com/mauricio.dallonder"}
               >
-                   <FontAwesomeIcon icon={faFacebook} style={{color: "#ffff"}} />
+                <Image
+                  height={64}
+                  width={64}
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/64px-2021_Facebook_icon.svg.png"
+                  alt="icone do facebook com cor azul"
+                />
               </SocialButton>
               <SocialButton
                 label={"Linkedin"}
@@ -163,25 +163,34 @@ export default function Footer() {
                   "https://www.linkedin.com/in/mauricio-dall-onder-40876a25b/"
                 }
               >
-            
-            <FontAwesomeIcon icon={faLinkedin} style={{color: "#ffff"}} />
+                <Image
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Linkedin.svg/200px-Linkedin.svg.png"
+                  width={64}
+                  height={64}
+                  alt="icone do linkedin"
+                />
               </SocialButton>
               <SocialButton
                 label={"GitHub"}
                 href={"https://github.com/mauricioDallOnder"}
               >
-                <FontAwesomeIcon icon={faGithub} style={{color: "#ffff"}} />
+                <Image
+                  src="https://desktop.github.com/images/desktop-icon.svg"
+                  width={64}
+                  height={64}
+                  alt="icone do github em cor roxa"
+                />
               </SocialButton>
             </Stack>
           </Container>
 
-          <Stack
-            direction={"row"}
-            justifyContent="center"
-            
-            spacing={6}
-          >
-            <Text color="white" textAlign='justify' marginLeft='5px' marginRight='5px'>
+          <Stack direction={"row"} justifyContent="center" spacing={6}>
+            <Text
+              color="white"
+              textAlign="justify"
+              marginLeft="5px"
+              marginRight="5px"
+            >
               Importante: O conteúdo presente neste blog tem um caráter
               estritamente informativo, não substituindo de forma alguma a
               orientação médica. Em caso de dúvida, é essencial que você busque

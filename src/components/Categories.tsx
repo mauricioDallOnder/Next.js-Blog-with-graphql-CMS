@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { getCategories } from '../services';
+import React, { useState, useEffect } from "react";
+import { getCategories } from "../services";
 
-import Link from 'next/link'; 
+import Link from "next/link";
 
 export default function Categories() {
-  const [categories, setCategories] = useState<{ name: string; slug: string }[]>([]);
- 
+  const [categories, setCategories] = useState<
+    { name: string; slug: string }[]
+  >([]);
 
   useEffect(() => {
     getCategories().then((newCategories) => {
@@ -18,10 +19,19 @@ export default function Categories() {
       <h3 className="text-xl mb-8 font-semibold border-b pb-4">Categorias</h3>
       <ul>
         {categories.map((category, index) => (
-          <li 
-            key={index} 
-            className={`mb-3 ${(index === categories.length - 1) ? '' : 'border-b pb-2'}`}>
-            <Link href={category.slug === "todos-os-artigos" ? '/' : `/categoria/${category.slug}`}>
+          <li
+            key={index}
+            className={`mb-3 ${
+              index === categories.length - 1 ? "" : "border-b pb-2"
+            }`}
+          >
+            <Link
+              href={
+                category.slug === "todos-os-artigos"
+                  ? "/"
+                  : `/categoria/${category.slug}`
+              }
+            >
               <button className="cursor-pointer block hover:text-[#3399cc] focus:outline-none focus:underline">
                 {category.name}
               </button>
@@ -31,6 +41,4 @@ export default function Categories() {
       </ul>
     </nav>
   );
-};
-
-
+}
