@@ -10,7 +10,7 @@ import {
   TriangleDownIcon,
   Search2Icon,
 } from "@chakra-ui/icons";
-import logo_avatar from '../assets/LOGO.png'
+import logo_avatar from "../assets/LOGO.png";
 
 export default function Header() {
   const [categories, setCategories] = useState<
@@ -22,17 +22,16 @@ export default function Header() {
   const [isInputVisible, setInputVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [buttonText, setButtonText] = useState("PESQUISAR");
-
+  const [isSearching, setIsSearching] = useState(false);
   async function handleSearch() {
-    setButtonText("BUSCANDO...");
-
-    
-
     if (inputValue.trim() !== "") {
-      router.push(`/search/${inputValue.trim()}`);
-      setInputValue("");
+      setIsSearching(true); // Indica que a pesquisa começou
+      setButtonText("BUSCANDO...");
+      await router.push(`/search/${inputValue.trim()}`);
+      setIsSearching(false); // Indica que a pesquisa terminou
+      setButtonText("PESQUISAR");
+      setInputValue(""); // Limpar o input depois da pesquisa
     }
-    setButtonText("PESQUISAR");
   }
 
   useEffect(() => {
@@ -85,9 +84,7 @@ export default function Header() {
           <Link href="/" passHref>
             <div className="flex items-center cursor-pointer">
               <Image
-                src={
-                  logo_avatar
-                }
+                src={logo_avatar}
                 alt="Logotipo chacomsabor"
                 width={200}
                 height={71}
@@ -104,7 +101,6 @@ export default function Header() {
             {menuOpen ? (
               <CloseIcon style={{ fontSize: "24px", color: "#fa0000" }} />
             ) : (
-             
               <HamburgerIcon style={{ fontSize: "24px", color: "#FFFFFF" }} />
             )}
           </button>
@@ -125,9 +121,7 @@ export default function Header() {
                 </Link>
               </li>
               <li className="relative">
-              
                 <button
-                
                   onClick={() => setDropdownOpen(!dropdownOpen)}
                   id="dropdownNavbarLink"
                   className="flex items-center justify-between w-full py-2 pl-3 pr-4 text-white rounded hover:text-white md:hover:bg-transparent md:border-0 md:p-0 md:w-auto md:hover:text-red focus:outline-blue focus:text-red font-bold hover:underline"
@@ -143,7 +137,6 @@ export default function Header() {
                   } z-10 bg-red divide-y divide-gray-100 rounded-lg shadow w-44 absolute top-full left-0 mt-2 dark:bg-gray-700 dark:divide-gray-600 font-bold`}
                   id="dropdownNavbar"
                 >
-                  
                   <ul
                     className="rounded-md bg-white shadow-lg p-2 mt-2"
                     aria-labelledby="dropdownNavbarLink"
@@ -174,30 +167,27 @@ export default function Header() {
                 </Link>
               </li>
               <li className="flex items-center">
-                <div className="flex flex-col md:flex-row justify-start gap-2 items-center">
+                <div className="flex flex-col md:flex-row justify-start gap-2 items-center w-full md:w-auto">
                   {isInputVisible ? (
-                    <div className="flex items-center align-middle gap-2">
+                    <div className="flex items-center align-middle gap-2 w-full">
                       <input
-                        className="pl-2 bg-white border border-gray-300 w-full md:w-88 text-lg font-medium text-black focus:border-yellow-500 focus:outline-none rounded-md py-2"
+                        className="pl-2 bg-white border border-gray-300 w-full text-lg font-medium text-black focus:border-yellow-500 focus:outline-none rounded-md py-2"
                         placeholder="pesquisar..."
                         value={inputValue}
                         onChange={handleChange}
                         aria-label="Search"
                       />
-                      <div className="flex mb-2 gap-2">
-                        {inputValue === "" ? (
-                         
+                      <div className="flex mb-2 gap-2 w-full">
+                        {isSearching || inputValue === "" ? (
                           <button
                             disabled={true}
-                            className="custom-btn-blue bg-blue-600 text-white rounded-md px-4 py-2 cursor-pointer"
+                            className="custom-btn-blue bg-blue-600 text-white rounded-md px-4 py-2 cursor-not-allowed w-full"
                           >
-                            PESQUISAR{" "}
+                            {buttonText}
                           </button>
-                          
-                          
                         ) : (
                           <button
-                            className="custom-btn-blue bg-blue-600 text-white rounded-md px-4 py-2 cursor-pointer"
+                            className="custom-btn-blue bg-blue-600 text-white rounded-md px-4 py-2 cursor-pointer w-full"
                             onClick={handleSearch}
                           >
                             {buttonText}
@@ -205,7 +195,7 @@ export default function Header() {
                         )}
                         <button
                           onClick={toggleInputVisibility}
-                          className="custom-btn-red bg-red-600 text-white rounded-md px-4 my-4 cursor-pointer"
+                          className="custom-btn-red bg-red-600 text-white rounded-md px-4 my-4 cursor-pointer md:my-0"
                         >
                           <CloseIcon />
                         </button>
