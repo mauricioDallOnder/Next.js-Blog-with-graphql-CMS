@@ -262,7 +262,7 @@ export const getAdjacentPosts = async (createdAt: string, slug: string): Promise
 export const getPostsByCategory = async (categorySlug: string): Promise<IPostCardProps[]> => {
   const query = gql`
     query GetPostsByCategory($categorySlug: String!) {
-      posts(where: { categories_some: { slug: $categorySlug } }) {
+      posts(where: { categories_some: { slug: $categorySlug } },first: 70) {
         title
         excerpt
         featuredImage {
