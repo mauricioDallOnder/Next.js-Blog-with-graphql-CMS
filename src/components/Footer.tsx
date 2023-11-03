@@ -121,6 +121,13 @@ export default function Footer() {
               >
                 Sobre
               </Link>
+              <Link
+                href="/sitemap"
+                role="link"
+                aria-label="Mapa do site"
+              >
+                Mapa do Site
+              </Link>
             </Stack>
           </nav>
         </Container>
