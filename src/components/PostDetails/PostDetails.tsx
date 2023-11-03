@@ -33,7 +33,7 @@ export default function PostDetail({post}:PostDetailProps){
                 src={typeObj.src || ""}
                 className="my-4 rounded shadow-lg"
               />
-              <figcaption className="text-gray-500 text-sm mt-2">{typeObj.title}</figcaption>
+             
             </figure>
           );
         default:
