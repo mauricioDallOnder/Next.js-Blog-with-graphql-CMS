@@ -7,11 +7,12 @@ import Head from "next/head";
 import { useState } from "react";
 
 import FeaturedPosts from "@/components/Sections/FeaturedPosts";
+import SubscribeForm from "@/components/NewsletterForms/SubscribeForm";
 
 const POSTS_PER_PAGE = 3;
 export default function Home({
   posts,
-  featuredPosts
+  featuredPosts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -50,10 +51,13 @@ export default function Home({
               <PostCard key={index} {...post} />
             ))}
           </div>
+
           <aside className="lg:col-span-4 col-span-1">
             <div className="lg:sticky relative top-8">
               <PostWidget />
               <Categories />
+              <SubscribeForm />
+              <br />
             </div>
           </aside>
         </section>
@@ -92,7 +96,9 @@ export default function Home({
             }
             disabled={currentPage === totalPages}
             className={`text-center custom-btn-purple rounded-full bg-[#9c27b0] w-16 py-2 cursor-pointer px-2
-            ${currentPage === totalPages ? "opacity-50 cursor-not-allowed" : ""}`}
+            ${
+              currentPage === totalPages ? "opacity-50 cursor-not-allowed" : ""
+            }`}
             aria-label="próxima pagina"
           >
             <svg
@@ -118,9 +124,9 @@ export default function Home({
 
 export const getStaticProps: GetStaticProps<{
   posts: IPostCardProps[];
-  featuredPosts: IFeaturedPost[];  
+  featuredPosts: IFeaturedPost[];
 }> = async () => {
   const posts = await getPosts();
-  const featuredPosts = await getFeaturedPosts();  
-  return { props: { posts, featuredPosts } };  // <-- Passando featuredPosts como prop também
+  const featuredPosts = await getFeaturedPosts();
+  return { props: { posts, featuredPosts } };
 };
