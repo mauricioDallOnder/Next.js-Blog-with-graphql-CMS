@@ -93,9 +93,9 @@ export default function CookieConsentBanner () {
             </Link>
             <Link href="/info/PrivacyPolicy">
               <p>  {/* estiliza o link */}
-              Para mais informações, leia nossa Política de Privacidade.
+              Para mais informações, leia nossa
                 <span className="font-bold text-sky-400">
-                  Política de Privacidade
+                  Política de Privacidade.
                 </span>
               </p>
             </Link>
