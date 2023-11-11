@@ -5,6 +5,7 @@ import moment from "moment";
 import { IChild, IContentType, PostDetailProps } from "@/interfaces/interfaces";
 import Image from "next/legacy/image";
 import Calendar from "@/svg/calendar";
+import ShareButton from "../ShareButton";
 export default function PostDetail({post}:PostDetailProps){
 
 
@@ -67,6 +68,7 @@ export default function PostDetail({post}:PostDetailProps){
         <h1 className="mb-8 text-3xl font-semibold">{post.title}</h1>
         {post.content.raw.children.map((typeObj, index) => getContentFragment(index, typeObj.children, typeObj))}
       </div>
+      <ShareButton/>
     </article>
   );
 };
