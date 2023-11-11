@@ -65,7 +65,7 @@ export default function CookieConsentBanner () {
             margin: "0 0 10px 10px",  
             padding: "10px 20px",  
             borderRadius: "0.375rem",
-            backgroundColor:"##2e7d32",
+            backgroundColor:"#2e7d32",
             color: "#rgb(255, 255, 255)",
             whiteSpace: 'nowrap',
             boxShadow:'rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;',
