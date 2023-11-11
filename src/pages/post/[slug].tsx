@@ -54,16 +54,17 @@ const PostPage: React.FC<PostPageProps> = ({ post }) => {
 
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await getPosts();  
+  const posts = await getPosts();
   const paths = posts.map(post => ({
     params: { slug: post.slug }
   }));
 
   return {
     paths,
-    fallback: 'blocking',  
+    fallback: 'blocking', // Gera páginas estáticas no primeiro acesso para novos slugs
   };
 };
+
 
 
 export const getStaticProps: GetServerSideProps<PostPageProps> = async (
@@ -82,7 +83,7 @@ export const getStaticProps: GetServerSideProps<PostPageProps> = async (
     props: {
       post,
     },
-    revalidate: 60 * 60 * 1, // 1 hours
+    revalidate: 60
   };
 };
 export default PostPage;

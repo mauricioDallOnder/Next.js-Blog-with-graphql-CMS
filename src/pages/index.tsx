@@ -23,8 +23,6 @@ export default function Home({
     currentPage * POSTS_PER_PAGE
   );
 
-
-
   return (
     <>
       <Head>
@@ -66,11 +64,10 @@ export default function Home({
 
         {/* Controles de paginação */}
         <Pagination
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        totalPages={totalPages}
-      />
-       
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          totalPages={totalPages}
+        />
       </main>
     </>
   );
@@ -82,5 +79,8 @@ export const getStaticProps: GetStaticProps<{
 }> = async () => {
   const posts = await getPosts();
   const featuredPosts = await getFeaturedPosts();
-  return { props: { posts, featuredPosts } };
+  return {
+    props: { posts, featuredPosts },
+    revalidate: 60,
+  };
 };
