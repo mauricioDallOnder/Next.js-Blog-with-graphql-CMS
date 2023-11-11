@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import share from "../../public/share.svg";
 import whatsapp from "../../public/whatsapp.svg";

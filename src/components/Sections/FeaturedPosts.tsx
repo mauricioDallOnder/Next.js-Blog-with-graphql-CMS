@@ -1,8 +1,8 @@
-import React from 'react';
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-import FeaturedPostCard from './FeaturedPostCard';
-import { IFeaturedPost } from '@/interfaces/interfaces';
+import React from "react";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import FeaturedPostCard from "./FeaturedPostCard";
+import { IFeaturedPost } from "@/interfaces/interfaces";
 
 const responsive = {
   superLargeDesktop: {
@@ -23,34 +23,74 @@ const responsive = {
   },
 };
 
-const FeaturedPosts = ({ featuredPosts }: { featuredPosts: IFeaturedPost[] }) => {
+const FeaturedPosts = ({
+  featuredPosts,
+}: {
+  featuredPosts: IFeaturedPost[];
+}) => {
   const customLeftArrow = (
-    <div className="absolute arrow-btn left-0 text-center py-3 cursor-pointer bg-pink-600 rounded-full">
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 text-white w-full" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-      </svg>
-    </div>
+    <nav className="absolute inline-flex -space-x-px rounded-md shadow-lg cursor-pointer bg-pink-600 dark:text-gray-100">
+    <button
+      aria-label="botao de scroll"
+      className="inline-flex items-center px-2 py-2 text-sm font-semibold rounded-md shadow-lg transform transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:bg-pink-600 dark:text-gray-100 dark:hover:bg-pink-700 dark:hover:border-pink-700 border border-transparent hover:border-current"
+    >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          aria-hidden="true"
+          className="w-5 h-5"
+        >
+          <path
+            fillRule="evenodd"
+            d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+            clipRule="evenodd"
+          ></path>
+        </svg>
+      </button>
+    </nav>
   );
 
   const customRightArrow = (
-    <div className="absolute arrow-btn right-0 text-center py-3 cursor-pointer bg-pink-600 rounded-full">
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-6  text-white w-full" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-      </svg>
-    </div>
+    <nav className="absolute inline-flex -space-x-px rounded-md shadow-lg dark:bg-pink-600 dark:text-gray-100 right-0">
+    <button
+      aria-label="botao de scroll"
+      className="inline-flex items-center px-2 py-2 text-sm font-semibold rounded-md shadow-lg transform transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:bg-pink-600 dark:text-gray-100 dark:hover:bg-pink-700 dark:hover:border-pink-700 border border-transparent hover:border-current"
+    >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          aria-hidden="true"
+          className="w-5 h-5"
+        >
+          <path
+            fillRule="evenodd"
+            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+            clipRule="evenodd"
+          ></path>
+        </svg>
+      </button>
+    </nav>
   );
 
   return (
     <div className="mb-8">
-      <Carousel infinite customLeftArrow={customLeftArrow} customRightArrow={customRightArrow} responsive={responsive} itemClass="px-4">
+      <Carousel
+        infinite
+        customLeftArrow={customLeftArrow}
+        customRightArrow={customRightArrow}
+        responsive={responsive}
+        itemClass="px-4"
+      >
         {featuredPosts.map((post, index) => (
-          <FeaturedPostCard 
-            key={index} 
-            title={post.title} 
-            featuredImage={post.featuredImage} 
-            author={post.author} 
-            createdAt={post.createdAt} 
-            slug={post.slug} 
+          <FeaturedPostCard
+            key={index}
+            title={post.title}
+            featuredImage={post.featuredImage}
+            author={post.author}
+            createdAt={post.createdAt}
+            slug={post.slug}
           />
         ))}
       </Carousel>
