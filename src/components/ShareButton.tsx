@@ -37,8 +37,8 @@ function ShareButton() {
               <a href="" target="_blank">
                 <FacebookShareButton
                   url={currentPage}
-                  quote={"Dummy text!"}
-                  hashtag="#muo"
+                  quote={"chá com sabor, sua melhor página de chás!"}
+                  hashtag="#CháComSaborBlog"
                 >
                   <Image
                     height={25}
