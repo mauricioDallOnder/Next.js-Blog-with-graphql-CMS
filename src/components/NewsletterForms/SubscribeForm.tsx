@@ -126,7 +126,8 @@ export default function SubscribeForm() {
                   color={useColorModeValue("gray.800", "white")} // Contraste aprimorado para texto do input
                   bg={useColorModeValue("white", "gray.700")} // Mais escuro para o modo escuro
                   rounded={"full"}
-                  border={0}
+                  border='1px solid rgba(0, 0, 0, 0.87)'
+                  
                   _focus={{
                     bg: useColorModeValue("gray.200", "gray.800"), // Ajuste no foco para manter o contraste
                     outline: "none",
@@ -134,7 +135,7 @@ export default function SubscribeForm() {
                 />
 
                 <Button
-                   colorScheme={isSubscribe === true ? '#2e7d32"' : 'rgb(211, 47, 47)'}
+                   backgroundColor={isSubscribe === true ? "#2e7d32" : 'rgb(211, 47, 47)'}
                    flex={'1 0 auto'}
                    rounded={'full'}
                   type='submit'
