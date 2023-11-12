@@ -29,10 +29,9 @@ const PostPage: React.FC<PostPageProps> = ({ post }) => {
           type: 'article',
         }}
       />
-      <main className="container mx-auto px-10 mb-8"> 
-    
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          <article className="col-span-1 lg:col-span-8"> 
+    <main className="container mx-auto px-4 sm:px-10 mb-8">
+  <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8">
+    <article className="col-span-1 lg:col-span-7 xl:col-span-8">
             <PostDetail post={post} />
             <section> 
               <AdjacentPostsContainer createdAt={post.createdAt} slug={post.slug}  />
@@ -40,12 +39,12 @@ const PostPage: React.FC<PostPageProps> = ({ post }) => {
               <Comments slug={post.slug} />
             </section>
           </article>
-          <aside className="col-span-1 lg:col-span-4"> 
-            <div className="relative lg:sticky top-8">
-              <PostWidget slug={post.slug} categories={post.categories.map((category) => category.slug)} />
-              <Author post={post} />
-            </div>
-          </aside>
+          <aside className="col-span-1 lg:col-span-5 xl:col-span-4">
+      <div className="sticky top-8">
+        <PostWidget slug={post.slug} categories={post.categories.map((category) => category.slug)} />
+        <Author post={post} />
+      </div>
+    </aside>
         </div>
       </main>
     </>
