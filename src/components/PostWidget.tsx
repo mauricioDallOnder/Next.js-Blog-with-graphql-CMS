@@ -21,7 +21,7 @@ export default function PostWidget({ categories, slug }: PostWidgetProps) {
   }, [slug]);
 
   return (
-    <aside className="bg-white shadow-lg rounded-lg p-6 mb-8 space-y-4">
+    <aside className="bg-white shadow-lg rounded-lg p-6 mb-8 space-y-4 lg:mr-1 xl:mr-1">
       <h2 className="text-2xl font-semibold border-b pb-2 tracking-wide">
         {slug ? "Posts Relacionados" : "Posts Recentes"}
       </h2>
