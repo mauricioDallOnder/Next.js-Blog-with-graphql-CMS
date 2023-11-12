@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import moment from "moment";
 import Link from "next/link";
@@ -40,13 +41,17 @@ export default function PostWidget({ categories, slug }: PostWidgetProps) {
             />
           </div>
           <div className="flex-grow flex flex-col justify-center space-y-1">
-            <time className="block text-gray-500 text-sm" dateTime={post.createdAt}>
+            <time
+              className="block text-gray-500 text-sm"
+              dateTime={post.createdAt}
+            >
               {moment(post.createdAt).format("MMM DD, YYYY")}
             </time>
-            <Link href={`/post/${post.slug}`} className="text-black hover:text-blue-600 text-lg font-medium transition-colors duration-200">
-              
-                {post.title}
-             
+            <Link
+              href={`/post/${post.slug}`}
+              className="text-black hover:text-blue-600 text-lg font-medium transition-colors duration-200"
+            >
+              {post.title}
             </Link>
           </div>
         </article>

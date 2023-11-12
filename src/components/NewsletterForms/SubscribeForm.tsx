@@ -82,11 +82,11 @@ export default function SubscribeForm() {
 
   return (
     <>
-    <Flex as="main" align="center" justify="center" w="full" tabIndex={-1}>
+      <Flex as="main" align="center" justify="center" w="full" tabIndex={-1}>
         <VStack
-          as="article" // Use 'article' ou 'section' conforme apropriado
+          as="article"
           boxShadow={"2xl"}
-          bg={useColorModeValue("white", "gray.700")}
+          bg={useColorModeValue("white", "gray.800")} // Mais escuro para o modo escuro
           rounded={"xl"}
           p={10}
           spacing={8}
@@ -96,14 +96,14 @@ export default function SubscribeForm() {
           <Icon as={NotificationIcon} w={24} h={24} />
           <Box as="header" textAlign='center' marginBottom='2px'>
             <Heading
-              as="h1" 
+              as="h1"
               textTransform={"uppercase"}
               fontSize={"2xl"}
-              color={useColorModeValue("gray.800", "gray.200")}
+              color={useColorModeValue("gray.800", "white")} 
             >
               {isSubscribe ? "Inscrever-se" : "Descadastrar-se"}
             </Heading>
-            <Text fontSize={"md"} color={"gray.500"}>
+            <Text fontSize={"md"} color={useColorModeValue("gray.600", "gray.300")}> 
               {isSubscribe
                 ? "Assine nossa newsletter e fique atualizado!"
                 : "Digite seu e-mail para descadastrar-se da nossa newsletter."}
@@ -111,38 +111,41 @@ export default function SubscribeForm() {
           </Box>
           <FormControl as="section" isInvalid={!!errors.email} role="form">
             <form onSubmit={handleSubmit(onSubmit)}>
-            <Stack spacing={4} direction={{ base: "column", md: "row" }} w={"full"}>
-            <Input
-              id="email"
-              type="email"
-              {...register("email", {
-                required: "Email é obrigatório",
-                pattern: {
-                  value: /^\S+@\S+$/i,
-                  message: "Email inválido",
-                },
-              })}
-              placeholder="Digite seu email"
-              color={useColorModeValue("gray.800", "gray.200")}
-              bg={useColorModeValue("gray.100", "gray.600")}
-              rounded={"full"}
-              border={0}
-              _focus={{
-                bg: useColorModeValue("gray.200", "gray.800"),
-                outline: "none",
-              }}
-            />
+              <Stack spacing={4} direction={{ base: "column", md: "row" }} w={"full"}>
+                <Input
+                  id="email"
+                  type="email"
+                  {...register("email", {
+                    required: "Email é obrigatório",
+                    pattern: {
+                      value: /^\S+@\S+$/i,
+                      message: "Email inválido",
+                    },
+                  })}
+                  placeholder="Digite seu email"
+                  color={useColorModeValue("gray.800", "white")} // Contraste aprimorado para texto do input
+                  bg={useColorModeValue("white", "gray.700")} // Mais escuro para o modo escuro
+                  rounded={"full"}
+                  border={0}
+                  _focus={{
+                    bg: useColorModeValue("gray.200", "gray.800"), // Ajuste no foco para manter o contraste
+                    outline: "none",
+                  }}
+                />
 
-              <Button
-                 colorScheme={isSubscribe === true ? 'green' : 'red'}
-                 flex={'1 0 auto'}
-                 rounded={'full'}
-                type='submit'
-                
-              >
-                {isSubscribe ? "Inscrever" : "Descadastrar"}
-              </Button>
-            </Stack>
+                <Button
+                   colorScheme={isSubscribe === true ? 'green' : 'red'}
+                   flex={'1 0 auto'}
+                   rounded={'full'}
+                  type='submit'
+                  
+                >
+                  {isSubscribe ? "Inscrever" : "Descadastrar"}
+                </Button>
+              </Stack>
+              <FormErrorMessage>
+                {errors.email && errors.email.message}
+              </FormErrorMessage>
             </form>
           </FormControl>
           <Button as="footer" variant="link" onClick={toggleSubscriptionMode} aria-label={isSubscribe ? "Mudar para descadastro" : "Mudar para inscrição"}>
@@ -150,6 +153,6 @@ export default function SubscribeForm() {
           </Button>
         </VStack>
       </Flex>
-      </>
+    </>
   );
 }

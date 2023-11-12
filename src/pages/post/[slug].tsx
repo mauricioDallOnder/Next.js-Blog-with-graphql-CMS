@@ -2,9 +2,15 @@
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import { IPostDetails } from "@/interfaces/interfaces";
 import { getPostDetails, getPosts } from "@/services";
-import { AdjacentPostsContainer, Author, Comments, CommentsForm, PostWidget } from "@/components";
+import {
+  AdjacentPostsContainer,
+  Author,
+  Comments,
+  CommentsForm,
+  PostWidget,
+} from "@/components";
 import PostDetail from "@/components/PostDetails/PostDetails";
-import { NextSeo } from 'next-seo'; // Importar o NextSeo
+import { NextSeo } from "next-seo"; // Importar o NextSeo
 
 interface PostPageProps {
   post: IPostDetails;
@@ -14,7 +20,6 @@ const PostPage: React.FC<PostPageProps> = ({ post }) => {
   const contentText = post.content.text || post.excerpt;
   return (
     <>
-   
       <NextSeo
         openGraph={{
           title: post.title,
@@ -22,49 +27,52 @@ const PostPage: React.FC<PostPageProps> = ({ post }) => {
           url: `https://cha-com-sabor.vercel.app/posts/${post.slug}`,
           images: [
             {
-              url: post.featuredImage.url, 
+              url: post.featuredImage.url,
               alt: post.title,
-            }
+            },
           ],
-          type: 'article',
+          type: "article",
         }}
       />
-    <main className="container mx-auto px-4 sm:px-10 mb-8">
-  <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8">
-    <article className="col-span-1 lg:col-span-7 xl:col-span-8">
+      <main className="container mx-auto px-4 sm:px-10 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8">
+          <article className="col-span-1 lg:col-span-7 xl:col-span-8">
             <PostDetail post={post} />
-            <section> 
-              <AdjacentPostsContainer createdAt={post.createdAt} slug={post.slug}  />
+            <section>
+              <AdjacentPostsContainer
+                createdAt={post.createdAt}
+                slug={post.slug}
+              />
               <CommentsForm post={post} />
               <Comments slug={post.slug} />
             </section>
           </article>
           <aside className="col-span-1 lg:col-span-5 xl:col-span-4">
-      <div className="sticky top-8">
-        <PostWidget slug={post.slug} categories={post.categories.map((category) => category.slug)} />
-        <Author post={post} />
-      </div>
-    </aside>
+            <div className="sticky top-8">
+              <PostWidget
+                slug={post.slug}
+                categories={post.categories.map((category) => category.slug)}
+              />
+              <Author post={post} />
+            </div>
+          </aside>
         </div>
       </main>
     </>
   );
 };
 
-
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getPosts();
-  const paths = posts.map(post => ({
-    params: { slug: post.slug }
+  const paths = posts.map((post) => ({
+    params: { slug: post.slug },
   }));
 
   return {
     paths,
-    fallback: 'blocking', // Gera páginas estáticas no primeiro acesso para novos slugs
+    fallback: "blocking", // Gera páginas estáticas no primeiro acesso para novos slugs
   };
 };
-
-
 
 export const getStaticProps: GetServerSideProps<PostPageProps> = async (
   context
@@ -82,8 +90,7 @@ export const getStaticProps: GetServerSideProps<PostPageProps> = async (
     props: {
       post,
     },
-    revalidate: 60
+    revalidate: 60,
   };
 };
 export default PostPage;
-
