@@ -43,9 +43,9 @@ export default function CookieConsentBanner () {
       {!hasConsent && (
         <CookieConsent
           location="bottom"
-          buttonText="Aceitar Todos"
+          buttonText="Aceitar Cookies"
           enableDeclineButton
-          declineButtonText="Rejeitar Todos"
+          declineButtonText="Rejeitar Cookies"
           cookieName="myCookieConsent"
           style={{
             display: "flex",
@@ -100,7 +100,7 @@ export default function CookieConsentBanner () {
                 </span>
               
             </Link> 
-              para melhorar sua experiência de navegação, veicular anúncios ou conteúdo personalizado e analisar nosso tráfego. Ao clicar em "Aceitar Todos", você concorda com o uso de cookies.
+              para melhorar sua experiência de navegação, veicular anúncios ou conteúdo personalizado e analisar nosso tráfego. Ao clicar em "Aceitar Cookies", você concorda com o uso de cookies.
               </p>
             </Link>
             <Link href="/info/PrivacyPolicy">
