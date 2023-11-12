@@ -5,6 +5,7 @@ import { Categories, PostCard, PostWidget } from "@/components";
 import CategoriesHeader from "@/components/CategoriesHeader";
 import { NextSeo } from "next-seo";
 import { useState } from "react";
+import Pagination from "@/components/Pagination";
 
 const POSTS_PER_PAGE = 5;
 export default function CategoryPage({
@@ -54,57 +55,11 @@ export default function CategoryPage({
         </section>
         {/* Controles de paginação */}
 
-        <section className="flex justify-center items-center mt-8 space-x-4">
-          <button
-            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-            disabled={currentPage === 1}
-            className={`ext-center custom-btn-purple rounded-full bg-[#9c27b0] w-16 py-2 cursor-pointer px-2
-            ${currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""}`}
-            aria-label="página anterior"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6  text-white w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M10 19l-7-7m0 0l7-7m-7 7h18"
-              />
-            </svg>
-          </button>
-          <span className="text-lg font-semibold text-white">
-            página {currentPage} de {totalPages}
-          </span>
-          <button
-            onClick={() =>
-              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-            }
-            disabled={currentPage === totalPages}
-            className={`text-center custom-btn-purple rounded-full bg-[#9c27b0] w-16 py-2 cursor-pointer px-2
-            ${currentPage === totalPages ? "opacity-50 cursor-not-allowed" : ""}`}
-            aria-label="próxima pagina"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6  text-white w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M14 5l7 7m0 0l-7 7m7-7H3"
-              />
-            </svg>
-          </button>
-        </section>
+        <Pagination
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          totalPages={totalPages}
+        />
       </main>
     </>
   );
