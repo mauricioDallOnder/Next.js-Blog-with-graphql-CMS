@@ -103,7 +103,7 @@ export default function SubscribeForm() {
             >
               {isSubscribe ? "Inscrever-se" : "Descadastrar-se"}
             </Heading>
-            <Text fontSize={"md"} color={useColorModeValue("gray.600", "gray.300")}> 
+            <Text fontSize={"md"} color="rgba(0, 0, 0, 0.87)"> 
               {isSubscribe
                 ? "Assine nossa newsletter e fique atualizado!"
                 : "Digite seu e-mail para descadastrar-se da nossa newsletter."}
@@ -134,11 +134,11 @@ export default function SubscribeForm() {
                 />
 
                 <Button
-                   colorScheme={isSubscribe === true ? 'green' : 'red'}
+                   colorScheme={isSubscribe === true ? '#2e7d32"' : 'rgb(211, 47, 47)'}
                    flex={'1 0 auto'}
                    rounded={'full'}
                   type='submit'
-                  
+                  color="rgb(255, 255, 255)"
                 >
                   {isSubscribe ? "Inscrever" : "Descadastrar"}
                 </Button>
@@ -148,7 +148,7 @@ export default function SubscribeForm() {
               </FormErrorMessage>
             </form>
           </FormControl>
-          <Button as="footer" variant="link" onClick={toggleSubscriptionMode} aria-label={isSubscribe ? "Mudar para descadastro" : "Mudar para inscrição"}>
+          <Button as="footer"  colorScheme={isSubscribe === true ? '#2e7d32"' : 'rgb(211, 47, 47)'} cursor="pointer" variant="link" onClick={toggleSubscriptionMode} aria-label={isSubscribe ? "Mudar para descadastro" : "Mudar para inscrição"}>
             {isSubscribe ? "Ou descadastrar-se" : "Ou inscrever-se"}
           </Button>
         </VStack>
