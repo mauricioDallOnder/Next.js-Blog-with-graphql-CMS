@@ -44,31 +44,31 @@ export default function Home({
         <meta property="og:url" content="https://cha-com-sabor.vercel.app" />
       </Head>
       <main className="container mx-auto px-10 mb-8">
-        <FeaturedPosts featuredPosts={featuredPosts} />
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-8 col-span-1">
-            {paginatedPosts.map((post, index) => (
-              <PostCard key={index} {...post} />
-            ))}
-          </div>
+  <FeaturedPosts featuredPosts={featuredPosts} />
+  <section className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+    <div className="lg:col-span-8 col-span-1">
+      {paginatedPosts.map((post, index) => (
+        <PostCard key={index} {...post} />
+      ))}
+      {/* Mover a Paginação aqui */}
+      <Pagination
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        totalPages={totalPages}
+      />
+    </div>
 
-          <aside className="lg:col-span-4 col-span-1">
-            <div className="lg:sticky relative top-8">
-              <PostWidget />
-              <Categories />
-              <SubscribeForm />
-              <br />
-            </div>
-          </aside>
-        </section>
+    <aside className="lg:col-span-4 col-span-1">
+      <div className="lg:sticky relative top-8">
+        <PostWidget />
+        <Categories />
+        <SubscribeForm />
+        <br />
+      </div>
+    </aside>
+  </section>
+</main>
 
-        {/* Controles de paginação */}
-        <Pagination
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          totalPages={totalPages}
-        />
-      </main>
     </>
   );
 }
