@@ -6,37 +6,88 @@ import { IChild, IContentType, PostDetailProps } from "@/interfaces/interfaces";
 import Image from "next/legacy/image";
 import Calendar from "@/svg/calendar";
 import ShareButton from "../ShareButton";
+import React from "react";
+
+
+const calculateReadingTime = (text: string): number => {
+    const wordsPerMinute = 200; // Média de palavras por minuto
+    const textLength = text.split(/\s+/).length; // Contagem do número de palavras
+    const readingTime = Math.ceil(textLength / wordsPerMinute);
+    return readingTime;
+  };
+
 export default function PostDetail({ post }: PostDetailProps) {
+  const readingTime = calculateReadingTime(post.content.text);
   const getContentFragment = (
     index: number,
-    children: IChild[],
-    typeObj?: IContentType
+    typeObj: IContentType | IChild
   ) => {
-    return children.map((child, childIndex) => {
-      let content: ReactNode = child.text;
-
-      if (child.bold) content = <strong key={childIndex}>{content}</strong>;
-      if (child.italic) content = <em key={childIndex}>{content}</em>;
-      if (child.underline) content = <u key={childIndex}>{content}</u>;
-
-      switch (typeObj?.type) {
-        case "heading-three":
+    // Verificando se estamos lidando com IContentType
+    if ('type' in typeObj) {
+      switch (typeObj.type) {
+        case "bulleted-list":
+        return (
+          <ul key={index} className="list-disc list-inside my-4">
+            {typeObj.children.map((listItem, listItemIndex) =>
+              getContentFragment(listItemIndex, listItem)
+            )}
+          </ul>
+        );
+      case "numbered-list":
+        return (
+          <ol key={index} className="list-decimal list-inside my-4">
+            {typeObj.children.map((listItem, listItemIndex) =>
+              getContentFragment(listItemIndex, listItem)
+            )}
+          </ol>
+        );
+      case "list-item":
+        return (
+          <li key={index}>
+            {typeObj.children.map((listItemChild, listItemChildIndex) =>
+              getContentFragment(listItemChildIndex, listItemChild)
+            )}
+          </li>
+        );
+      case "list-item-child":
+        return (
+          <React.Fragment key={index}>
+            {typeObj.children.map((child, childIndex) =>
+              getContentFragment(childIndex, child)
+            )}
+          </React.Fragment>
+        );
+        case "heading-one":
           return (
-            <h3 key={childIndex} className="text-xl font-semibold mb-4">
-              {content}
-            </h3>
+            <h1 key={index} className="mb-8 text-3xl font-semibold">
+              {typeObj.children.map((child, childIndex) => 
+                getContentFragment(childIndex, child)
+              )}
+            </h1>
           );
         case "paragraph":
           return (
-            <p key={childIndex} className="text-lg text-justify mb-8">
-              {content}
+            <p key={index} className="text-lg text-justify mb-8">
+              {typeObj.children.map((child, childIndex) => 
+                getContentFragment(childIndex, child)
+              )}
             </p>
           );
-        case "heading-four":
+        case "heading-two":
           return (
-            <h4 key={childIndex} className="text-lg font-medium mb-4">
-              {content}
-            </h4>
+            <h2 key={index} className="text-2xl font-semibold mb-4">
+              {typeObj.children.map((child, childIndex) => 
+                getContentFragment(childIndex, child)
+              )}
+            </h2>
+          );
+          case "heading-three":
+            return (
+              <h2 key={index} className="text-2xl font-semibold mb-4">
+                {typeObj.children.map((child, childIndex) => 
+                  getContentFragment(childIndex, child)
+                )}
+              </h2>
           );
         case "image":
           return (
@@ -50,13 +101,36 @@ export default function PostDetail({ post }: PostDetailProps) {
               />
             </figure>
           );
+        case "video":
+          return (
+            <div key={index} className="video-wrapper">
+              <video
+                controls
+                src={typeObj.src}
+                className="my-4 rounded shadow-lg w-full"
+              >
+                Seu navegador não suporta vídeos.
+              </video>
+            </div>
+          );
+       
         default:
-          return content;
+          return null; // tratamento  para tipos desconhecidos
       }
-    });
+    } else {
+      // Processando IChild
+      let content: ReactNode = typeObj.text;
+    if (typeObj.bold) content = <strong key={index}>{content}</strong>;
+    if (typeObj.italic) content = <em key={index}>{content}</em>;
+    if (typeObj.underline) content = <u key={index}>{content}</u>;
+  
+      return content;
+    }
   };
+  
+  
   return (
-    <article className="bg-white shadow-lg rounded-lg lg:p-8 pb-12 mb-8">
+    <article className="bg-white/90 shadow-lg  backdrop-blur-md rounded-lg lg:p-8 pb-12 mb-8">
       <figure className="relative overflow-hidden shadow-md mb-6">
         <img
           src={post.featuredImage?.url}
@@ -81,16 +155,17 @@ export default function PostDetail({ post }: PostDetailProps) {
               {post.author?.name}
             </p>
           </div>
-          <div className="font-medium text-gray-700">
+          <div className="font-medium text-gray-700 flex flex-row items-center ">
             <Calendar />
             <time className="align-middle">
               {moment(post.createdAt).format("MMM DD, YYYY")}
             </time>
+            <span className="ml-2"> - {readingTime} min de leitura</span>
           </div>
         </header>
-        <h1 className="mb-8 text-3xl font-semibold">{post.title}</h1>
+      
         {post.content.raw.children.map((typeObj, index) =>
-          getContentFragment(index, typeObj.children, typeObj)
+          getContentFragment(index, typeObj)
         )}
       </div>
       <ShareButton />
