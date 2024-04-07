@@ -6,9 +6,9 @@ export default function Document() {
   return (
     <Html lang="pt-br">
       <Head>
-      <meta name="google-site-verification" content="fA_xQB0J5slMw14GbDBUJD3nfwy8PAl8V-8-aembKHg" />
-      <meta name="google-adsense-account" content="ca-pub-7645741188042839"/>
-      <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7645741188042839"
+     
+      <meta name="google-adsense-account" content="ca-pub-2505830070324686"/>
+      <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2505830070324686"
      crossOrigin="anonymous"/>
      
     
@@ -21,4 +21,4 @@ export default function Document() {
     </Html>
   )
 }
-//add Analytics
+//add Analytics  <meta name="google-site-verification" content="fA_xQB0J5slMw14GbDBUJD3nfwy8PAl8V-8-aembKHg" />
